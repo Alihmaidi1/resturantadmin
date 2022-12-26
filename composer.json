@@ -48,8 +48,9 @@
             "php artisan migrate:refresh",
             "php artisan passport:install",
             "php artisan passport:client --password",
-            "php artisan passport:client --personal",
-            "php artisan db:seed"
+            "php artisan db:seed",
+            "php artisan passport:client --personal"
+
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

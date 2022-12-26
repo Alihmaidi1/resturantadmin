@@ -46,8 +46,8 @@
             "@php artisan package:discover --ansi",
             "php artisan key:generate",
             "php artisan migrate:refresh",
-            "php artisan passport:install",
             "php artisan passport:client --password",
+            "php artisan passport:install",
             "php artisan db:seed",
             "php artisan passport:client --personal"
 

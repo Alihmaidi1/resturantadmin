@@ -83,6 +83,7 @@ use Illuminate\Support\Facades\Storage;
     function tokenInfo($arr,$password,$provider="admins"){
 
         $client= DB::table('oauth_clients')->where("provider",$provider)->first();
+
         return Http::asForm()->post(env("APP_URL")."/oauth/token",[
                 'grant_type' => 'password',
                 'client_id' =>$client->id,

@@ -48,7 +48,7 @@
             "php artisan migrate:refresh",
             "php artisan passport:install",
             "php artisan passport:client --password",
-            "php artisan passport:client --password",
+            "php artisan passport:client --personal",
             "php artisan db:seed"
         ],
         "post-update-cmd": [

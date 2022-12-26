@@ -1,0 +1,31 @@
+
+extend type Mutation {
+
+    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard @can(ability:"currency") @can(ability:"create",injectArgs:true)
+    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard  @can(ability:"currency") @can(ability:"update",injectArgs:true)
+    deletecurrency(id:ID): Currency @validator @guard @can(ability:"currency")
+}
+
+extend type Query{
+
+    getallcurrency(resturant_id:ID): [Currency]  @validator
+
+
+}
+
+type Currency{
+
+    id:ID
+    code:String
+    name:String
+    precent_value_in_dular:String
+    message: String
+    resturant:Resturant @belongsTo
+    is_default_for_website:String
+    tabletypes: [tabletype] @hasMany
+    foods:[Food!] @hasMany
+    jobs:[Job] @hasMany
+    setting:Setting @hasOne
+
+
+}

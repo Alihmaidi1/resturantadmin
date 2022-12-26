@@ -1,0 +1,43 @@
+<?php
+
+namespace App\GraphQL\Mutations\Admin\Account;
+
+use App\Exceptions\CustomException;
+use App\Models\admin;
+
+final class Login
+{
+    /**
+     * @param  null  $_
+     * @param  array{}  $args
+     */
+    public function __invoke($_, array $args)
+    {
+
+        try{
+
+            $arr=[];
+            $arr["email"]=$args["email"];
+            $arr["resturant_id"]=(isset($args["resturant_id"]))?$args["resturant_id"]:null;
+            $token=tokenInfo($arr,$args['password'],"admins");
+            if($token->status()==200){
+            $admin=admin::where("email",$args["email"])->first();
+            $admin->token_info=$token->json();
+            $admin->message=trans("admin.your are login successfully");
+            return $admin;
+
+            }else{
+                throw new CustomException($token);
+            }
+
+        }catch(\Exception $ex){
+
+            throw new CustomException($ex->getMessage());
+
+
+        }
+
+
+
+    }
+}

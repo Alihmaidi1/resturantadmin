@@ -51,6 +51,13 @@ class resturant extends Model
     }
 
 
+    public function roles(){
+
+        return $this->hasMany(role::class, "resturant_id");
+    }
+
+
+
     public function tables(){
 
 

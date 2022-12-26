@@ -15,7 +15,7 @@ class role extends Model
     use HasUuids;
 
 
-    public $fillable=["name","permssions"];
+    public $fillable=["name","permssions","resturant_id"];
     public $translatable = ['name'];
 
     public $hidden=["created_at","updated_at"];
@@ -27,6 +27,15 @@ class role extends Model
     public function getPermssionsAttribute($value){
         return json_decode($value);
     }
+
+
+    public function resturant(){
+
+
+        return $this->belongsTo(resturant::class, "resturant_id");
+    }
+
+
 
 
 }

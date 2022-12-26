@@ -19,7 +19,8 @@ final class EditroleValidator extends Validator
             "name_ar"=>["required"],
             "name_en"=>["required"],
             "permission"=>["array","required"],
-            "id"=>["required","not_in:1","exists:roles,id"]
+            "id"=>["required","not_in:1","exists:roles,id"],
+            "resturant_id"=>["exists:resturants,id"]
 
 
         ];
@@ -36,7 +37,8 @@ final class EditroleValidator extends Validator
             "permission.array"=>trans("admin.permission should be array"),
             "id.required"=>trans("admin.id field is required"),
             "id.not_in"=>trans("admin.can't edit super role"),
-            "id.exists"=>trans("admin.id not found in our data")
+            "id.exists"=>trans("admin.id not found in our data"),
+            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
 
 

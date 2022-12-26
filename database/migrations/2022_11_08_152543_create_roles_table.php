@@ -17,6 +17,8 @@ return new class extends Migration
             $table->uuid("id");
             $table->primary("id");
             $table->text("name");
+            $table->uuid("resturant_id")->nullable();
+            $table->foreign("resturant_id")->references("id")->on("resturants")->onDelete("cascade")->onUpdate("cascade");
             $table->json("permssions");
             $table->timestamps();
         });

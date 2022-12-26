@@ -33,6 +33,7 @@ type Query{
     tabletypes:[tabletype] @hasMany
     goods: [Good] @hasMany
     sliders:[Slider] @hasMany
+    roles:[Role] @hasMany
     banner:[Banner] @hasMany
     setting:Setting @hasOne
     message:String

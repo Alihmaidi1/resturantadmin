@@ -17,6 +17,7 @@ use App\Models\food;
 use App\Models\good;
 use App\Models\goodstore;
 use App\Models\job;
+use App\Models\role;
 use App\Models\setting;
 use App\Models\slider;
 use App\Models\storehouse;
@@ -33,6 +34,7 @@ use App\Policies\foodPolicy;
 use App\Policies\goodPolicy;
 use App\Policies\goodstorePolicy;
 use App\Policies\jobPolicy;
+use App\Policies\rolePolicy;
 use App\Policies\settingPolicy;
 use App\Policies\sliderPolicy;
 use App\Policies\storehousePolicy;
@@ -69,7 +71,8 @@ class AuthServiceProvider extends ServiceProvider
         banner::class=>bannerPolicy::class,
         food::class=>foodPolicy::class,
         setting::class=>settingPolicy::class,
-        chat::class=>chatPolicy::class
+        chat::class=>chatPolicy::class,
+        role::class=>rolePolicy::class
 
 
     ];

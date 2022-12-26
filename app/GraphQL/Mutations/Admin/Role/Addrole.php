@@ -31,8 +31,10 @@ final class Addrole
         }
         $role=role::create([
             "name"=>["en"=>$args["name_en"],"ar"=>$args["name_ar"]],
-            "permssions"=>json_encode($permissions)
+            "permssions"=>json_encode($permissions),
+            "resturant_id"=>isset($args["resturant_id"])?$args["resturant_id"]:null
         ]);
+        $role->message = trans("admin.the role was added successfully");
 
         return $role;
 

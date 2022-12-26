@@ -189,6 +189,7 @@ return [
             'App\\GraphQL\\Queries\\Admin\\Setting',
             'App\\GraphQL\\Queries\\Admin\\Aws',
             'App\\GraphQL\\Queries\\Admin\\Chat',
+            'App\\GraphQL\\Queries\\Admin\\Role',
 
 
 

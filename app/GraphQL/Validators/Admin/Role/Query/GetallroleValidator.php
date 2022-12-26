@@ -1,10 +1,10 @@
 <?php
 
-namespace App\GraphQL\Validators\Admin\Role\Mutation;
+namespace App\GraphQL\Validators\Admin\Role\Query;
 
 use Nuwave\Lighthouse\Validation\Validator;
 
-final class AddroleValidator extends Validator
+final class GetallroleValidator extends Validator
 {
     /**
      * Return the validation rules.
@@ -15,27 +15,17 @@ final class AddroleValidator extends Validator
     {
         return [
 
-            "name_ar"=>["required"],
-            "name_en"=>["required"],
-            "permission"=>["array","required"],
             "resturant_id"=>["exists:resturants,id"]
-
 
         ];
     }
 
-
     public function messages(): array
     {
-
         return [
 
-            "name_ar.required"=>trans("admin.name in arabic is required"),
-            "name_en.required"=>trans("admin.name in english is required"),
-            "permission.array"=>trans("admin.permission should be array"),
             "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
         ];
     }
-
 }

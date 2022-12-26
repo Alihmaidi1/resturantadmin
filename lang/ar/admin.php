@@ -286,6 +286,9 @@ return [
     "gender should is 0 or 1"=>"الجنس يجب أن يكون 1 او 0",
     "you don't have permmssion to update admin"=>"أن لا تملك الصلاحيات لتغير اعدادات حساب الادمن",
     "you don't have permmssion to delete admin"=>"أنت لا تملك الصلاحيات لحذف أدمن",
+    "the role was added successfully"=>"تم أضافة الصلاحية بنجاح",
+    "you don't have permmssion to edit role"=>"أنت لا تملك صلاحيات تعديل صلاحية",
+    "you don't have permmssion to delete role"=>"أنت لا تملك صلاحيات حذف هذه الصلاحية",
 
 
 

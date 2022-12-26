@@ -30,10 +30,10 @@ final class Editrole
 
         }
 
-
         $role=role::find($args['id']);
         $role->name=["en"=>$args["name_en"],"ar"=>$args["name_ar"]];
         $role->permssions=json_encode($permissions);
+        $role->resturant_id=isset($args["resturant_id"])?$args["resturant_id"]:null;
         $role->save();
         $role->message=trans("admin.the role was updated successfully");
         return $role;

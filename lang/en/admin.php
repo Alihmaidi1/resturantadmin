@@ -285,6 +285,9 @@ return [
     "gender should is 0 or 1"=>"gender should is 0 or 1",
     "you don't have permmssion to update admin"=>"you don't have permmssion to update admin",
     "you don't have permmssion to delete admin"=>"you don't have permmssion to delete admin",
+    "the role was added successfully"=>"the role was added successfully",
+    "you don't have permmssion to edit role"=>"you don't have permmssion to edit role",
+    "you don't have permmssion to delete role"=>"you don't have permmssion to delete role",
 
 
 

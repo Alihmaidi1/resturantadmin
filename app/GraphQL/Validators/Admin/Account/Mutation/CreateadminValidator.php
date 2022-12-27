@@ -19,17 +19,23 @@ final class CreateadminValidator extends Validator
         $inputs = $this->args->toArray();
         $email=isset($inputs["email"])?$inputs["email"]:null;
         $resturant_id=isset($inputs["resturant_id"])?$inputs["resturant_id"]:null;
+        $role_id = isset($inputs["role_id"]) ? $inputs["role_id"] : null;
         return [
             "email" => [
                 "required",
                 "email",
-                Rule::unique("admins")->where(function ($query) use ($email,$resturant_id) {
-                    return $query->where("email",$email)->where("resturant_id",$resturant_id);
+                Rule::unique("admins")->where(function ($query) use ($email, $resturant_id) {
+                    return $query->where("email", $email)->where("resturant_id", $resturant_id);
                 })
 
             ],
-            "password"=>["required"],
-            "role_id"=>["exists:roles,id","required"],
+            "password" => ["required"],
+            "role_id" => [
+                "required",
+                Rule::exists("roles","id")->where(function ($query) use ($role_id, $resturant_id) {
+                    return $query->where("id", $role_id)->where("resturant_id", $resturant_id);
+                })
+            ],
             "rank"=>["required"],
             "name"=>["string"],
             "age"=>["integer"],

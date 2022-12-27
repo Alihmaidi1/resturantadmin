@@ -1,5 +1,5 @@
 extend type Query{
-    getalladmin:[Admin!]  @guard @can(model:"App\\Models\\admin",ability:"admin")
+    getalladmin(resturant_id:ID):[Admin!]  @guard @can(model:"App\\Models\\admin",ability:"admin")
     me:Admin @guard @auth
     getpermission:PermissionArray @guard @can(ability:"role",model:"App\\Models\\admin")
     admininfo(id:ID):Admin @guard @validator @can(model:"App\\Models\\admin",ability:"admin") @can(model:"App\\Models\\admin",ability:"view",injectArgs: true)

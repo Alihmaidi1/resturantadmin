@@ -19,15 +19,24 @@ final class UpdateadminValidator extends Validator
         $email = isset($inputs["email"])?$inputs["email"]:null;
         $id = isset($inputs["id"])?$inputs["id"]:null;
         $resturant_id = isset($inputs["resturant_id"])?$inputs["resturant_id"]:null;
+        $role_id = isset($inputs["role_id"]) ? $inputs["role_id"] : null;
         return [
             "id" => ["required", "exists:admins,id"],
             "email" => [
                 "required",
                 Rule::unique("admins")->where(function ($query) use ($email, $resturant_id) {
-                    return $query->where("email", $email)->where("resturant_id",$resturant_id);
+                    return $query->where("email", $email)->where("resturant_id", $resturant_id);
                 })->ignore($id)
             ],
-            "role_id"=>["required","exists:roles,id","not_in:1"],
+            "role_id" => [
+                "required",
+                "not_in:1",
+                Rule::exists("roles", "id")->where(function ($query) use ($role_id, $resturant_id) {
+
+                    return $query->where("id", $role_id)->where("resturant_id",$resturant_id);
+
+                })
+            ],
             "resturant_id"=>["required","exists:resturants,id"],
             "rank"=>["required"],
             "name"=>["required"],

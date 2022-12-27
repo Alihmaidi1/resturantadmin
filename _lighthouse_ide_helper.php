@@ -5,6 +5,7 @@
 
 
 namespace Illuminate\Foundation\Testing {
+
     class TestResponse
     {
         /**

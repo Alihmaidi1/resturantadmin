@@ -27,7 +27,7 @@
       'endpoint' => NULL,
       'use_path_style_endpoint' => false,
       'throw' => false,
-    ),
+    )
 
   ),
   'links' =>

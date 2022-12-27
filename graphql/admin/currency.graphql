@@ -1,14 +1,14 @@
 
 extend type Mutation {
 
-    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard @can(ability:"currency") @can(ability:"create",injectArgs:true)
-    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard  @can(ability:"currency") @can(ability:"update",injectArgs:true)
-    deletecurrency(id:ID): Currency @validator @guard @can(ability:"currency")
+    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard @can(model:"App\\Models\\currency",ability:"currency") @can(model:"App\\Models\\currency",ability:"create",injectArgs:true)
+    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard  @can(model:"App\\Models\\currency",ability:"currency") @can(model:"App\\Models\\currency",ability:"update",injectArgs:true)
+    deletecurrency(id:ID): Currency @validator @guard @can(ability:"currency",model:"App\\Models\\currency")
 }
 
 extend type Query{
 
-    getallcurrency(resturant_id:ID): [Currency]  @validator
+    getallcurrency(resturant_id:ID): [Currency]   @validator
 
 
 }

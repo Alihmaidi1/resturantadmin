@@ -291,6 +291,10 @@ return [
     "you don't have permmssion to delete role"=>"أنت لا تملك صلاحيات حذف هذه الصلاحية",
     "the domain is required"=>"الدومين مطلوب",
     "the domain should be url"=>"الدومين يجب أن يكون رابط",
+    "the resturant has already default currency"=>"هذا المطعم يملك عملة افتراضية مسبقا",
+    "you don't have permmssion to create currency"=>"أنت لا تملك صلاحية انشاء عملة",
+    "you don't have permmssion to update currency"=>"انت لا تملك صلاحيات لتعديل العملة",
+    "you don't have permmssion to delete currency"=>"انت لا تملك صلاحيات لحذف العملة",
 
 
 

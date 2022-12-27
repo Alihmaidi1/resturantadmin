@@ -4,6 +4,7 @@ namespace App\GraphQL\Mutations\Admin\Currency;
 
 use App\Exceptions\CustomException;
 use App\Models\currency;
+use App\repo\interfaces\currencyinterface;
 
 final class Editcurrency
 {
@@ -11,24 +12,25 @@ final class Editcurrency
      * @param  null  $_
      * @param  array{}  $args
      */
+    public $currency;
+    public function __construct(currencyinterface $currency)
+    {
+
+        $this->currency = $currency;
+
+    }
     public function __invoke($_, array $args)
     {
 
-        $count=currency::where("is_default_for_website",1)->count();
-
-        $currency=currency::find($args["id"]);
-        if($currency->is_default_for_website==0&&$count>0&&$args["is_default"]==1){
-
-            throw new CustomException("wee have default currency");
-        }
-        $currency->name=["en"=>$args["name_en"],"ar"=>$args["name_ar"]];
-        $currency->code=$args["code"];
-        $currency->resturant_id=$args["resturant_id"];
-        $currency->is_default_for_website=$args["is_default"];
-        $currency->precent_value_in_dular=$args["precent_value_in_dular"];
-        $currency->save();
+        $id=$args["id"];
+        $name_en=$args["name_en"];
+        $name_ar=$args["name_ar"];
+        $code=$args["code"];
+        $resturant_id=$args["resturant_id"];
+        $is_default=$args["is_default"];
+        $precent_value_in_dular=$args["precent_value_in_dular"];
+        $currency=$this->currency->update($id, $code, $name_ar, $name_en, $precent_value_in_dular, $resturant_id, $is_default);
         $currency->message=trans("admin.the currency was updated successfully");
         return $currency;
-
     }
 }

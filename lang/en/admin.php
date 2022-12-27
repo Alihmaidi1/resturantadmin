@@ -290,6 +290,10 @@ return [
     "you don't have permmssion to delete role"=>"you don't have permmssion to delete role",
     "the domain is required"=>"the domain is required",
     "the domain should be url"=>"the domain should be url",
+    "the resturant has already default currency"=>"the resturant has already default currency",
+    "you don't have permmssion to create currency"=>"you don't have permmssion to create currency",
+    "you don't have permmssion to update currency"=>"you don't have permmssion to update currency",
+    "you don't have permmssion to delete currency"=>"you don't have permmssion to delete currency",
 
 
 

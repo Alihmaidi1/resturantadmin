@@ -2,6 +2,8 @@
 
 namespace App\GraphQL\Validators\Admin\Currency\Mutation;
 
+use App\Models\currency;
+use App\Rules\checkDefaultCurrency;
 use Nuwave\Lighthouse\Validation\Validator;
 
 final class AddcurrenyValidator extends Validator
@@ -13,6 +15,9 @@ final class AddcurrenyValidator extends Validator
      */
     public function rules(): array
     {
+
+        $inputs = $this->args->toArray();
+        $resturant_id = isset($inputs["resturant_id"]) ? $inputs["resturant_id"] : null;
         return [
 
 
@@ -21,7 +26,7 @@ final class AddcurrenyValidator extends Validator
             "name_ar"=>["required"],
             "precent_value_in_dular"=>["required"],
             "resturant_id"=>["required","exists:resturants,id"],
-            "is_default"=>["required"]
+            "is_default"=>["required",new checkDefaultCurrency($resturant_id)]
 
         ];
     }

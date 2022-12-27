@@ -1,11 +1,11 @@
 <?php
 
-namespace App\GraphQL\Mutations\Admin\Currency;
+namespace App\GraphQL\Queries\Admin\Currency;
 
-use App\Models\currency;
 use App\repo\interfaces\currencyinterface;
 
-final class Deletecurrency
+
+final class Getallcurrency
 {
     /**
      * @param  null  $_
@@ -20,9 +20,7 @@ final class Deletecurrency
     }
     public function __invoke($_, array $args)
     {
-        $currency1 = $this->currency->delete($args["id"]);
-        $currency1->message=trans("admin.the currency was deleted successfully");
-        return $currency1;
+        return $this->currency->getAllCurrencyInResturant($args["resturant_id"]);
 
     }
 }

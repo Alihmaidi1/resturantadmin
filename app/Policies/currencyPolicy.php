@@ -6,11 +6,22 @@ use App\Models\admin;
 use App\Models\currency;
 use App\Models\User;
 use App\Models\currency_resturant;
+use App\Models\role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class currencyPolicy
 {
     use HandlesAuthorization;
+
+
+    public $superrole;
+    public function __construct()
+    {
+
+        $this->superrole = role::first()->id;
+
+    }
+
 
     /**
      * Determine whether the user can view any models.
@@ -41,7 +52,7 @@ class currencyPolicy
     public function create(admin $admin,array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->superrole){
 
             return true;
         }
@@ -51,7 +62,7 @@ class currencyPolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to create currency"));
 
 
     }
@@ -67,7 +78,7 @@ class currencyPolicy
     {
 
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->superrole){
 
             return true;
         }
@@ -77,7 +88,7 @@ class currencyPolicy
 
             return true;
         }
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to update currency"));
 
     }
 
@@ -99,7 +110,7 @@ class currencyPolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to delete currency"));
     }
 
     /**

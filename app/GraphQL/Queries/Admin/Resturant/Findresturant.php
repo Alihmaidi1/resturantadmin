@@ -3,6 +3,7 @@
 namespace App\GraphQL\Queries\Admin\Resturant;
 
 use App\Models\resturant;
+use App\repo\interfaces\resturantinterface;
 use Illuminate\Support\Facades\Cache;
 
 final class Findresturant
@@ -11,13 +12,16 @@ final class Findresturant
      * @param  null  $_
      * @param  array{}  $args
      */
-    public function __invoke($_, array $args)
+    public $resturant;
+    public function __construct(resturantinterface $resturant)
     {
 
-        $resturant= Cache::rememberForever("resturant:".$args["id"],function() use($args) {
+        $this->resturant = $resturant;
 
-            return resturant::find($args["id"]);
-        });
+    }
+    public function __invoke($_, array $args)
+    {
+        $resturant = $this->resturant->find($args["id"]);
         $resturant->message=trans("admin.the data was fetched successfully");
         return $resturant;
 

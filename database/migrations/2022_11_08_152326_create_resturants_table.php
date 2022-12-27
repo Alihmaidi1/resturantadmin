@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid("id");
             $table->primary("id");
             $table->string("address");
+            $table->string("domain");
             $table->text("name");
             $table->integer("rate")->default(0);
             $table->timestamps();

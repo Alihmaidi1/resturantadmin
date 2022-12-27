@@ -288,6 +288,8 @@ return [
     "the role was added successfully"=>"the role was added successfully",
     "you don't have permmssion to edit role"=>"you don't have permmssion to edit role",
     "you don't have permmssion to delete role"=>"you don't have permmssion to delete role",
+    "the domain is required"=>"the domain is required",
+    "the domain should be url"=>"the domain should be url",
 
 
 

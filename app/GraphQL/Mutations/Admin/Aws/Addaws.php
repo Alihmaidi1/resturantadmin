@@ -4,8 +4,6 @@ namespace App\GraphQL\Mutations\Admin\Aws;
 
 use App\Exceptions\CustomException;
 use App\Models\aws;
-use Illuminate\Support\Facades\Config;
-
 final class Addaws
 {
     /**

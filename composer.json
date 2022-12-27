@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "aws/aws-sdk-php": "^3.255",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.3",
@@ -44,12 +45,13 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "php artisan key:generate",
+              "php artisan key:generate",
             "php artisan migrate:refresh",
             "php artisan passport:client --password",
             "php artisan passport:install",
             "php artisan db:seed",
             "php artisan passport:client --personal"
+
 
         ],
         "post-update-cmd": [

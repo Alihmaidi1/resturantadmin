@@ -289,6 +289,8 @@ return [
     "the role was added successfully"=>"تم أضافة الصلاحية بنجاح",
     "you don't have permmssion to edit role"=>"أنت لا تملك صلاحيات تعديل صلاحية",
     "you don't have permmssion to delete role"=>"أنت لا تملك صلاحيات حذف هذه الصلاحية",
+    "the domain is required"=>"الدومين مطلوب",
+    "the domain should be url"=>"الدومين يجب أن يكون رابط",
 
 
 

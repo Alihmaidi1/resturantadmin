@@ -1,14 +1,14 @@
 <?php return array (
   'default' => 'local',
-  'disks' =>
+  'disks' => 
   array (
-    'local' =>
+    'local' => 
     array (
       'driver' => 'local',
       'root' => '/app/storage/app',
       'throw' => false,
     ),
-    'public' =>
+    'public' => 
     array (
       'driver' => 'local',
       'root' => '/app/storage/app/public',
@@ -16,7 +16,7 @@
       'visibility' => 'public',
       'throw' => false,
     ),
-    's3' =>
+    's3' => 
     array (
       'driver' => 's3',
       'key' => 'AKIAR3KVHLBETJGYG2OH',
@@ -28,9 +28,8 @@
       'use_path_style_endpoint' => false,
       'throw' => false,
     ),
-
   ),
-  'links' =>
+  'links' => 
   array (
     '/app/public/storage' => '/app/storage/app/public',
   ),

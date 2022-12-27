@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Validators\Admin\Role\Mutation;
 
+use App\Rules\checkPermission;
 use Nuwave\Lighthouse\Validation\Validator;
 
 final class AddroleValidator extends Validator
@@ -11,18 +12,27 @@ final class AddroleValidator extends Validator
      *
      * @return array<string, array<mixed>>
      */
+
+
+
+
+
     public function rules(): array
     {
+
+
+
         return [
 
             "name_ar"=>["required"],
             "name_en"=>["required"],
-            "permission"=>["array","required"],
-            "resturant_id"=>["exists:resturants,id"]
+            "permission"=>["array","required",new checkPermission],
+            "resturant_id"=>["exists:resturants,id"],
 
 
         ];
     }
+
 
 
     public function messages(): array

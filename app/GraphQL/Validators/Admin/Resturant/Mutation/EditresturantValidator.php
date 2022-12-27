@@ -18,8 +18,8 @@ final class EditresturantValidator extends Validator
 
             "id"=>["required","exists:resturants,id"],
             "address"=>["required","string"],
-            "name"=>["required","string"]
-
+            "name"=>["required","string"],
+            "domain"=>["required"]
         ];
     }
 
@@ -33,8 +33,8 @@ final class EditresturantValidator extends Validator
             "name.required"=>trans("admin.the name is required"),
             "name.string"=>trans("admin.the name should be string"),
             "id.required"=>trans("admin.id is required"),
-            "id.exists"=>trans("admin.id is not exists in our data")
-
+            "id.exists"=>trans("admin.id is not exists in our data"),
+            "domain.required"=>trans("admin.the domain is required")
 
 
         ];

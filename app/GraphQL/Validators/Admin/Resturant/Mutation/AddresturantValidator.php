@@ -17,8 +17,8 @@ final class AddresturantValidator extends Validator
 
 
             "address"=>["required","string"],
-            "name"=>["required","string"]
-
+            "name"=>["required","string"],
+            "domain"=>["required","url"]
 
         ];
     }
@@ -31,7 +31,13 @@ final class AddresturantValidator extends Validator
             "address.required"=>trans("admin.the address is required"),
             "address.string"=>trans("admin.the address should be string"),
             "name.required"=>trans("admin.the name is required"),
-            "name.string"=>trans("admin.the name should be string")
+            "name.string"=>trans("admin.the name should be string"),
+            "aws_access_key.required"=>trans("admin.aws access key is required"),
+            "aws_secret_access.required"=>trans("admin.aws secret access is required"),
+            "aws_region.required"=>trans("admin.aws region is required"),
+            "aws_bucket.required"=>trans("admin.aws bucket is required"),
+            "domain.required"=>trans("admin.the domain is required"),
+            "domain.url"=>trans("admin.the domain should be url"),
 
 
 

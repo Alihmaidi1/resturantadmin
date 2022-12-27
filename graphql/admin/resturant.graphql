@@ -1,10 +1,9 @@
 
 extend type Mutation{
 
-    addresturant(address:String,name:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
-    editresturant(id:ID,name:String,address:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
+    addresturant(address:String,name:String,domain:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
+    editresturant(id:ID,name:String,address:String,domain:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
     deleteresturant(id:ID):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
-
 
 
 }
@@ -20,6 +19,7 @@ type Query{
  type Resturant{
     id:ID
     address:String
+    domain:String
     storehouses:[storehouse] @hasMany
     tables: [table] @hasMany
     name:String
@@ -34,9 +34,13 @@ type Query{
     goods: [Good] @hasMany
     sliders:[Slider] @hasMany
     roles:[Role] @hasMany
-    banner:[Banner] @hasMany
+    banners:[Banner] @hasMany
     setting:Setting @hasOne
     message:String
+    aws: Aws @hasOne
+    admins:[Admin] @hasMany
+
+
 }
 
 
@@ -44,6 +48,7 @@ type Resturant_without_message{
 
     id:ID
     address:String
+    domain:String
     storehouses:[storehouse] @hasMany
     tables: [table] @hasMany
     name:String

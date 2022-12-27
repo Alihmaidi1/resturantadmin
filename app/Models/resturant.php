@@ -11,7 +11,7 @@ class resturant extends Model
     use HasFactory;
 
     use HasUuids;
-    public $fillable=["name","address","rate"];
+    public $fillable=["name","address","rate","domain"];
 
     public $hidden=["created_at","updated_at"];
 

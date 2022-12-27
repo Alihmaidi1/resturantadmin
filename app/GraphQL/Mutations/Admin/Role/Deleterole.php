@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations\Admin\Role;
 
 use App\Models\role;
+use App\repo\interfaces\roleinterface;
 
 final class Deleterole
 {
@@ -10,17 +11,19 @@ final class Deleterole
      * @param  null  $_
      * @param  array{}  $args
      */
-    public function __invoke($_, array $args)
+    public $role;
+    public function __construct(roleinterface $role)
     {
 
-        $role=role::find($args["id"]);
-        $role1=$role;
+        $this->role = $role;
 
+    }
+    public function __invoke($_, array $args)
+    {
+        $id = $args["id"];
+        $role1=$this->role->delete($id);
         $role1->message=trans("admin.the role was deleted successfully");
-        $role->delete();
         return $role1;
-
-
 
 
     }

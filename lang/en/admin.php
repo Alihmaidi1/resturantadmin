@@ -294,6 +294,11 @@ return [
     "you don't have permmssion to create currency"=>"you don't have permmssion to create currency",
     "you don't have permmssion to update currency"=>"you don't have permmssion to update currency",
     "you don't have permmssion to delete currency"=>"you don't have permmssion to delete currency",
+    "this currency is not exists in this resturant"=>"this currency is not exists in this resturant",
+    "you should make setting for this resturant first"=>"you should make setting for this resturant first",
+    "you don't have permmssion to create tabletype"=>"you don't have permmssion to create tabletype",
+    "you don't have permmssion to update tabletype"=>"you don't have permmssion to update tabletype",
+    "you don't have permmssion to delete tabletype"=>"you don't have permmssion to delete tabletype",
 
 
 

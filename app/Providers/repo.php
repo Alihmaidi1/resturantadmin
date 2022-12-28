@@ -7,11 +7,13 @@ use App\repo\classes\awscloud;
 use App\repo\classes\currency;
 use App\repo\classes\resturant;
 use App\repo\classes\role;
+use App\repo\classes\tabletype;
 use App\repo\interfaces\accountinterface;
 use App\repo\interfaces\cloudinterface;
 use App\repo\interfaces\currencyinterface;
 use App\repo\interfaces\resturantinterface;
 use App\repo\interfaces\roleinterface;
+use App\repo\interfaces\tabletypeinterface;
 use Illuminate\Support\ServiceProvider;
 
 class repo extends ServiceProvider
@@ -28,6 +30,8 @@ class repo extends ServiceProvider
         $this->app->bind(resturantinterface::class, resturant::class);
         $this->app->bind(roleinterface::class, role::class);
         $this->app->bind(currencyinterface::class,currency::class);
+        $this->app->bind(tabletypeinterface::class,tabletype::class);
+
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Validators\Admin\Tabletype\Mutation;
 
+use App\Rules\checkCurrencyResturant;
 use Nuwave\Lighthouse\Validation\Validator;
 
 final class AddtabletypeValidator extends Validator
@@ -13,11 +14,13 @@ final class AddtabletypeValidator extends Validator
      */
     public function rules(): array
     {
+        $inputs = $this->args->toArray();
+        $resturant_id = isset($inputs["resturant_id"]) ? $inputs["resturant_id"] : null;
         return [
             "price"=>["required"],
             "name_en"=>["required"],
             "name_ar"=>["required"],
-            "currency_id"=>["required","exists:currencies,id"],
+            "currency_id"=>["required",new checkCurrencyResturant($resturant_id)],
             "resturant_id"=>["required","exists:resturants,id"]
 
         ];

@@ -1,6 +1,6 @@
 extend type Mutation{
 
-    addtable(name:String,person_number:Int,description_en:String,description_ar:String,status:Int,resturant_id:ID,type_id:ID): table @validator @guard @can(ability:"table") @can(ability:"create",injectArgs:true)
+    addtable(name:String,person_number:Int,description_en:String,description_ar:String,status:Int,resturant_id:ID,type_id:ID): table @validator @guard @can(model:"App\\Models\\tabletype",ability:"table") @can(model:"App\\Models\\tabletype",ability:"create",injectArgs:true)
     edittable(id:ID,name:String,person_number:Int,description_en:String,description_ar:String,status:Int,resturant_id:ID,type_id:ID): table @validator @guard @can(ability:"table") @can(ability:"update",injectArgs:true)
     deletetable(id:ID): table @validator @guard @can(ability:"table") @can(ability:"delete",injectArgs:true)
 

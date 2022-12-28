@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations\Admin\Tabletype;
 
 use App\Models\tabletype;
+use App\repo\interfaces\tabletypeinterface;
 
 final class Deletetabletype
 {
@@ -10,12 +11,16 @@ final class Deletetabletype
      * @param  null  $_
      * @param  array{}  $args
      */
-    public function __invoke($_, array $args)
+    public $tabletype;
+    public function __construct(tabletypeinterface $tabletype)
     {
 
-        $tabletype=tabletype::find($args["id"]);
-        $tabletype1=$tabletype;
-        $tabletype->delete();
+        $this->tabletype = $tabletype;
+
+    }
+    public function __invoke($_, array $args)
+    {
+        $tabletype1 = $this->tabletype->delete($args["id"]);
         $tabletype1->message=trans("admin.the table type was deleted successfully");
         return $tabletype1;
 

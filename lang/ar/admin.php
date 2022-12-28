@@ -295,6 +295,11 @@ return [
     "you don't have permmssion to create currency"=>"أنت لا تملك صلاحية انشاء عملة",
     "you don't have permmssion to update currency"=>"انت لا تملك صلاحيات لتعديل العملة",
     "you don't have permmssion to delete currency"=>"انت لا تملك صلاحيات لحذف العملة",
+    "this currency is not exists in this resturant"=>"هذه العملة غير موجودة في هذا المطعم",
+    "you should make setting for this resturant first"=>"يجب عليك انشاء اعدادات المطعم أولا",
+    "you don't have permmssion to create tabletype"=>"أنت لا تملك صلاحيات انشاء نوع طاولة",
+    "you don't have permmssion to update tabletype"=>"أنت لا تملك صلاحيات تعديل نوع طاولة",
+    "you don't have permmssion to delete tabletype"=>"أنت لا تملك صلاحيات حذف نوع طاولة",
 
 
 

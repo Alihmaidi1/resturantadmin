@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\admin;
+use App\Models\role;
 use App\Models\setting;
 use App\Models\User;
 use App\Models\tabletype;
@@ -11,6 +12,14 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class tabletypePolicy
 {
     use HandlesAuthorization;
+
+    public $super;
+    public function __construct()
+    {
+
+        $this->super = role::first()->id;
+    }
+
 
     /**
      * Determine whether the user can view any models.
@@ -47,9 +56,9 @@ class tabletypePolicy
         $count=setting::where("resturant_id",$injected["resturant_id"])->count();
         if($count==0){
 
-            return false;
+            return $this->deny(trans("admin.you should make setting for this resturant first"));
         }
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
             return true;
         }
 
@@ -58,7 +67,7 @@ class tabletypePolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to create tabletype"));
     }
 
     /**
@@ -75,10 +84,10 @@ class tabletypePolicy
         $count=setting::where("resturant_id",$injected["resturant_id"])->count();
         if($count==0){
 
-            return false;
+            return $this->deny(trans("admin.you should make setting for this resturant first"));
         }
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -89,7 +98,7 @@ class tabletypePolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to update tabletype"));
 
     }
 
@@ -103,7 +112,7 @@ class tabletypePolicy
     public function delete(admin $admin, array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -113,7 +122,7 @@ class tabletypePolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to delete tabletype"));
 
     }
 

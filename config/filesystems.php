@@ -40,6 +40,18 @@
       'use_path_style_endpoint' => false,
       'throw' => false,
     ),
+    'resturant:98163e84-66a2-43ec-8315-01ae78672e1d' => 
+    array (
+      'driver' => 's3',
+      'key' => 'AKIAR3KVHLBEXLYHSPNV',
+      'secret' => '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',
+      'region' => 'us-east-2',
+      'bucket' => 'resturant6971538',
+      'url' => NULL,
+      'endpoint' => NULL,
+      'use_path_style_endpoint' => false,
+      'throw' => false,
+    ),
   ),
   'links' => 
   array (

@@ -301,6 +301,10 @@ return [
     "you don't have permmssion to delete tabletype"=>"you don't have permmssion to delete tabletype",
     "you don't have permmssion to create storehouse"=>"you don't have permmssion to create storehouse",
     "you don't have permmssion to delete storehouses"=>"you don't have permmssion to delete storehouses",
+    "you don't have permmssion to create good"=>"you don't have permmssion to create good",
+    "you don't have permmssion to update good"=>"you don't have permmssion to update good",
+    "you don't have permmssion to show good"=>"you don't have permmssion to show good",
+    "you don't have permmssion to delete good"=>"you don't have permmssion to delete good",
 
 
 

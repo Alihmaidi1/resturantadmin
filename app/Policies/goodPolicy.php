@@ -5,12 +5,21 @@ namespace App\Policies;
 use App\Models\admin;
 use App\Models\User;
 use App\Models\good;
+use App\Models\role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class goodPolicy
 {
     use HandlesAuthorization;
 
+
+    public $super;
+    public function __construct()
+    {
+
+        $this->super = role::first()->id;
+
+    }
     /**
      * Determine whether the user can view any models.
      *
@@ -32,7 +41,7 @@ class goodPolicy
     public function view(admin $admin, array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -42,7 +51,7 @@ class goodPolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to show good"));
     }
 
     /**
@@ -54,7 +63,7 @@ class goodPolicy
     public function create(admin $admin,array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -64,7 +73,7 @@ class goodPolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to create good"));
 
     }
 
@@ -78,7 +87,7 @@ class goodPolicy
     public function update(admin $admin, array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -88,7 +97,7 @@ class goodPolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to update good"));
 
     }
 
@@ -101,7 +110,7 @@ class goodPolicy
      */
     public function delete(admin $admin, array $injected)
     {
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -112,7 +121,7 @@ class goodPolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to delete good"));
     }
 
     /**

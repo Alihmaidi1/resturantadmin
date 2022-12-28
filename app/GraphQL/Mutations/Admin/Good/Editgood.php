@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations\Admin\Good;
 
 use App\Models\good;
+use App\repo\interfaces\goodinterface;
 
 final class Editgood
 {
@@ -10,13 +11,21 @@ final class Editgood
      * @param  null  $_
      * @param  array{}  $args
      */
+    public $good;
+    public function __construct(goodinterface $good)
+    {
+
+        $this->good = $good;
+
+    }
     public function __invoke($_, array $args)
     {
 
-        $good=good::find($args["id"]);
-        $good->name=["en"=>$args["name_en"],"ar"=>$args["name_ar"]];
-        $good->resturant_id=$args["resturant_id"];
-        $good->save();
+        $id=$args["id"];
+        $name_en=$args["name_en"];
+        $name_ar=$args["name_ar"];
+        $resturant_id=$args["resturant_id"];
+        $good = $this->good->update($id, $name_en, $name_ar, $resturant_id);
         $good->message=trans("admin.the good was updated successfully");
         return $good;
 

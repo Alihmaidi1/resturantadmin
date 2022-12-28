@@ -302,6 +302,10 @@ return [
     "you don't have permmssion to delete tabletype"=>"أنت لا تملك صلاحيات حذف نوع طاولة",
     "you don't have permmssion to create storehouse"=>"أنت لا تملك صلاحيات اضافة محزن",
     "you don't have permmssion to delete storehouses"=>"انت لا تملك صلاحية حذف مخزن",
+    "you don't have permmssion to create good"=>"انت لا تملك صلاحيات اضافة بضاعة",
+    "you don't have permmssion to update good"=>"أنت لا تملك صلاحيات تعديل بضاعة",
+    "you don't have permmssion to show good"=>"انت لا تملك صلاحيات لعرض البضاعة",
+    "you don't have permmssion to delete good"=>"انت لا تملك صلاحيات لحذف البضاعة",
 
 
 

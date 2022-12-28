@@ -300,6 +300,8 @@ return [
     "you don't have permmssion to create tabletype"=>"أنت لا تملك صلاحيات انشاء نوع طاولة",
     "you don't have permmssion to update tabletype"=>"أنت لا تملك صلاحيات تعديل نوع طاولة",
     "you don't have permmssion to delete tabletype"=>"أنت لا تملك صلاحيات حذف نوع طاولة",
+    "you don't have permmssion to create storehouse"=>"أنت لا تملك صلاحيات اضافة محزن",
+    "you don't have permmssion to delete storehouses"=>"انت لا تملك صلاحية حذف مخزن",
 
 
 

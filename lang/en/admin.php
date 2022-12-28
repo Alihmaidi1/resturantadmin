@@ -299,6 +299,8 @@ return [
     "you don't have permmssion to create tabletype"=>"you don't have permmssion to create tabletype",
     "you don't have permmssion to update tabletype"=>"you don't have permmssion to update tabletype",
     "you don't have permmssion to delete tabletype"=>"you don't have permmssion to delete tabletype",
+    "you don't have permmssion to create storehouse"=>"you don't have permmssion to create storehouse",
+    "you don't have permmssion to delete storehouses"=>"you don't have permmssion to delete storehouses",
 
 
 

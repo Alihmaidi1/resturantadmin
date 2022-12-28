@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\admin;
+use App\Models\role;
 use App\Models\User;
 use App\Models\storehouse;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -17,6 +18,16 @@ class storehousePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+    public $super;
+
+     public function __construct()
+     {
+
+        $this->super = role::first()->id;
+
+     }
+
     public function viewAny(User $user)
     {
         //
@@ -43,7 +54,7 @@ class storehousePolicy
     public function create(admin $admin,$injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -52,8 +63,7 @@ class storehousePolicy
 
             return true;
         }
-
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to create storehouse"));
     }
 
     /**
@@ -66,7 +76,7 @@ class storehousePolicy
     public function update(admin $admin, array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -77,7 +87,7 @@ class storehousePolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to update storehouse"));
 
     }
 
@@ -91,7 +101,7 @@ class storehousePolicy
     public function delete(admin $admin, array $injected)
     {
 
-        if($admin->role_id==1){
+        if($admin->role_id==$this->super){
 
             return true;
         }
@@ -101,7 +111,7 @@ class storehousePolicy
             return true;
         }
 
-        return false;
+        return $this->deny(trans("admin.you don't have permmssion to delete storehouses"));
 
     }
 

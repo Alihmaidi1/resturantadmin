@@ -1,14 +1,14 @@
 extend type Mutation{
 
-    addstorehouse(name:String,address:String,isFull:Int): storehouse @guard @can(model:"App\\Models\\storehouse",ability:"storehouse") @can(model:"App\\Models\\storehouse",ability:"create",injectArgs:true)
-    editstorehouse(id:ID,name:String,address:String,isFull:Int,resturant_id:ID): storehouse @validator @guard @can(model:"App\\Models\\storehouse",ability:"storehouse") @can(model:"App\\Models\\storehouse",ability:"update",injectArgs:true)
-    deletestorehouse(id:ID): storehouse @validator @guard @can(model:"App\\Models\\storehouse",ability:"storehouse") @can(model:"App\\Models\\storehouse",ability:"delete",injectArgs:true)
+    addstorehouse(name:String,address:String,isFull:Int): storehouse @guard @can(model:"App\\Models\\admin",ability:"storehouse") 
+    editstorehouse(id:ID,name:String,address:String,isFull:Int): storehouse @validator @guard @can(model:"App\\Models\\admin",ability:"storehouse") 
+    deletestorehouse(id:ID): storehouse @validator @guard @can(model:"App\\Models\\admin",ability:"storehouse") 
 
 }
 
 extend type Query{
 
-    getallresturantstorehouse(resturant_id:ID): [storehouse] @validator @guard @can(model:"App\\Models\\storehouse",ability:"storehouse")
+    getallresturantstorehouse: [storehouse] @all @guard @can(model:"App\\Models\\admin",ability:"storehouse")
 
 
 }

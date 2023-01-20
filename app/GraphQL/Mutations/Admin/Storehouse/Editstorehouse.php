@@ -25,8 +25,7 @@ final class Editstorehouse
         $name=$args["name"];
         $address=$args["address"];
         $isFull=$args["isFull"];
-        $resturant_id=$args["resturant_id"];
-        $storehouse = $this->storehouse->update($id, $name, $address, $isFull, $resturant_id);
+        $storehouse = $this->storehouse->update($id, $name, $address, $isFull);
         $storehouse->message=trans("admin.the storehouse was updated successfully");
         return $storehouse;
 

@@ -17,7 +17,6 @@ final class EditstorehouseValidator extends Validator
             "name"=>["required"],
             "address"=>["required"],
             "isFull"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"],
             "id"=>["required","exists:storehouses,id"]
 
         ];

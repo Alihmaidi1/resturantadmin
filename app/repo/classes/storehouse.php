@@ -23,13 +23,12 @@ class storehouse implements storehouseinterface{
 
     }
 
-    public function update($id,$name,$address,$isfull,$resturant_id){
+    public function update($id,$name,$address,$isfull){
 
         $storehouse = ModelsStorehouse::findOrFail($id);
         $storehouse->name = $name;
         $storehouse->address = $address;
         $storehouse->isFull = $isfull;
-        $storehouse->resturant_id = $resturant_id;
         return $storehouse;
 
     }

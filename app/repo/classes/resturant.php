@@ -9,24 +9,23 @@ use Illuminate\Support\Facades\Cache;
 class resturant implements resturantinterface{
 
 
-    public function store($address,$name,$domain){
+    public function store($name,$domain){
 
 
         return ModelsResturant::create([
-            "address"=>$address,
             "name"=>$name,
-            "domain"=>$domain
+            "domain"=>$domain,
+            "database_name"=>"resturant".time()
         ]);
 
 
     }
 
-    public function update($id,$name,$address,$domain){
+    public function update($id,$name,$domain){
 
 
         $resturant = ModelsResturant::findOrFail($id);
         $resturant->name = $name;
-        $resturant->address = $address;
         $resturant->domain = $domain;
         $resturant->save();
         return $resturant;

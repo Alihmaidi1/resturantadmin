@@ -17,9 +17,7 @@ final class Login
         try{
 
             $arr=[];
-            $arr["email"]=$args["email"];
-            $arr["resturant_id"]=(isset($args["resturant_id"]))?$args["resturant_id"]:null;
-            $token=tokenInfo($arr,$args['password'],"admins");
+            $token=tokenInfo($args["email"],$args['password'],"admins");
             if($token->status()==200){
             $admin=admin::where("email",$args["email"])->first();
             $admin->token_info=$token->json();

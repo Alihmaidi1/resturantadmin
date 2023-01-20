@@ -7,13 +7,12 @@ use App\repo\interfaces\roleinterface;
 class role implements roleinterface{
 
 
-    public function store($name_ar,$name_en,$permission,$resturant_id){
+    public function store($name_ar,$name_en,$permission){
 
 
         return ModelsRole::create([
             "name"=>["en"=>$name_en,"ar"=>$name_ar],
-            "permssions"=>json_encode($permission),
-            "resturant_id"=>$resturant_id
+            "permssions"=>json_encode($permission)
         ]);
 
     }
@@ -28,11 +27,10 @@ class role implements roleinterface{
 
     }
 
-    public function update($id,$name_en,$name_ar,$resturant_id,$permissions){
+    public function update($id,$name_en,$name_ar,$permissions){
 
         $role = ModelsRole::findOrFail($id);
         $role->name = ["en" => $name_en, "ar" => $name_ar];
-        $role->resturant_id=$resturant_id;
         $role->permssions = json_encode($permissions);
         $role->save();
         return $role;
@@ -40,10 +38,10 @@ class role implements roleinterface{
 
     }
 
-    public function getAllRole($resturant_id){
+    public function getAllRole(){
 
 
-        return ModelsRole::where("resturant_id", $resturant_id)->get();
+        return ModelsRole::get();
 
 
 

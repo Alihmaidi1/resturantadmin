@@ -8,7 +8,7 @@ use App\repo\interfaces\storehouseinterface;
 class storehouse implements storehouseinterface{
 
 
-    public function store($name,$address,$isfull,$resturant_id){
+    public function store($name,$address,$isfull){
 
 
         return ModelsStorehouse::create([
@@ -16,7 +16,6 @@ class storehouse implements storehouseinterface{
             "name"=>$name,
             "address"=>$address,
             "isFull"=>$isfull,
-            "resturant_id"=>$resturant_id
 
         ]);
 

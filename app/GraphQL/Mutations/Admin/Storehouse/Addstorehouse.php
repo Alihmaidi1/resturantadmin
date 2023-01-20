@@ -24,8 +24,7 @@ final class Addstorehouse
             $name=$args["name"];
             $address=$args["address"];
             $isFull=$args["isFull"];
-            $resturant_id=$args["resturant_id"];
-            $storehouse = $this->storehouse->store($name, $address, $isFull, $resturant_id);
+            $storehouse = $this->storehouse->store($name, $address, $isFull);
             $storehouse->message=trans("admin.the storehouse was added successfully");
             return $storehouse;
 

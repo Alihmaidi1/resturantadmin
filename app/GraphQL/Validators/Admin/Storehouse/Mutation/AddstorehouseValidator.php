@@ -18,7 +18,6 @@ final class AddstorehouseValidator extends Validator
             "name"=>["required"],
             "address"=>["required"],
             "isFull"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"]
 
         ];
     }
@@ -29,8 +28,6 @@ final class AddstorehouseValidator extends Validator
             "name.required"=>trans("admin.name is required"),
             "address.required"=>trans("admin.address is required"),
             "isFull.required"=>trans("admin.isFull is required"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
 
         ];
     }

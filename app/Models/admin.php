@@ -28,12 +28,7 @@ class admin extends Authenticatable implements JWTSubject
     }
 
 
-    public function findForPassport($username)
-    {
-        $arr=json_decode($username);
-        return $this->where('email', $arr->email)->where("resturant_id",$arr->resturant_id)->first();
-    }
-
+    
 
 
     public function getJWTIdentifier()
@@ -44,11 +39,6 @@ class admin extends Authenticatable implements JWTSubject
 
         return $this->belongsTo("App\Models\\role","role_id");
 
-    }
-
-    public function resturant(){
-
-        return $this->belongsTo(resturant::class,"resturant_id");
     }
 
 

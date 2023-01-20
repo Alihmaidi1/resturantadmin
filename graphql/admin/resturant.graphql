@@ -1,44 +1,25 @@
 
 extend type Mutation{
-
-    addresturant(address:String,name:String,domain:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
+    addresturant(name:String,domain:String):Resturant  @validator @guard @can(model:"App\\Models\\resturant",ability:"resturant")
     editresturant(id:ID,name:String,address:String,domain:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
     deleteresturant(id:ID):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
-
-
 }
 
 type Query{
 
-    findresturant(id:ID):Resturant @validator
-    getallresturant:[Resturant_without_message!]
+    findresturant(id:ID):Resturant @validator @can(model:"App\\Models\\resturant",ability:"resturant")
+    getallresturant:[Resturant_without_message!] @can(model:"App\\Models\\resturant",ability:"resturant")
     chats:[Chat] @hasMany
 
 }
 
  type Resturant{
     id:ID
-    address:String
     domain:String
-    storehouses:[storehouse] @hasMany
-    tables: [table] @hasMany
     name:String
-    employees:[Employee] @hasMany
     # chats: [Chat] @hasMany
-    foods:[Food] @hasMany
-    currencies:[Currency] @hasMany
-    jobs:[Job] @hasMany
-    employeeExperiences:[Experience] @hasMany
-    categories:[Category] @hasMany
-    tabletypes:[tabletype] @hasMany
-    goods: [Good] @hasMany
-    sliders:[Slider] @hasMany
-    roles:[Role] @hasMany
-    banners:[Banner] @hasMany
-    setting:Setting @hasOne
     message:String
     aws: Aws @hasOne
-    admins:[Admin] @hasMany
 
 
 }
@@ -47,24 +28,21 @@ type Query{
 type Resturant_without_message{
 
     id:ID
-    address:String
     domain:String
-    storehouses:[storehouse] @hasMany
-    tables: [table] @hasMany
     name:String
-    employees:[Employee] @hasMany
-    # chats: [Chat] @hasMany
-    foods:[Food] @hasMany
-    currencies:[Currency] @hasMany
-    jobs:[Job] @hasMany
-    employeeExperiences:[Experience] @hasMany
-    categories:[Category] @hasMany
-    tabletypes:[tabletype] @hasMany
-    goods: [Good] @hasMany
-    sliders:[Slider] @hasMany
-    banner:[Banner] @hasMany
-    setting:Setting @hasOne
     aws: Aws @hasOne
 }
 
 
+
+
+type Aws{
+
+    id:ID
+    aws_access_key:String
+    aws_secret_access:String
+    aws_region:String
+    aws_bucket:String
+    resturant:Resturant @belongsTo
+
+}

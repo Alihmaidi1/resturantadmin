@@ -16,34 +16,15 @@ final class UpdateadminValidator extends Validator
     {
 
         $inputs = $this->args->toArray();
-        $email = isset($inputs["email"])?$inputs["email"]:null;
         $id = isset($inputs["id"])?$inputs["id"]:null;
-        $resturant_id = isset($inputs["resturant_id"])?$inputs["resturant_id"]:null;
-        $role_id = isset($inputs["role_id"]) ? $inputs["role_id"] : null;
         return [
             "id" => ["required", "exists:admins,id"],
-            "email" => [
-                "required",
-                Rule::unique("admins")->where(function ($query) use ($email, $resturant_id) {
-                    return $query->where("email", $email)->where("resturant_id", $resturant_id);
-                })->ignore($id)
-            ],
-            "role_id" => [
-                "required",
-                "not_in:1",
-                Rule::exists("roles", "id")->where(function ($query) use ($role_id, $resturant_id) {
-
-                    return $query->where("id", $role_id)->where("resturant_id",$resturant_id);
-
-                })
-            ],
-            "resturant_id"=>["required","exists:resturants,id"],
+            "email" => ["required","unique:admins,email,".$id],
+            "role_id" => ["required","not_in:1","exists:roles,id"],
             "rank"=>["required"],
             "name"=>["required"],
             "age"=>["integer"],
             "gender"=>["in:0,1"]
-
-
         ];
     }
 
@@ -58,8 +39,6 @@ final class UpdateadminValidator extends Validator
             "email.required"=>trans("admin.email is required"),
             "role_id.required"=>trans("admin.role id is required"),
             "role_id.exists"=>trans("admin.role id is not exists in our data"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
             "rank.required"=>trans("admin.rank is required"),
             "role_id.not_in"=>trans("admin.this role for super admin"),
             "name.required"=>trans("admin.name is required"),

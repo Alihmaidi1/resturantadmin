@@ -26,8 +26,7 @@ final class Editrole
         $id=$args['id'];
         $name_en = $args["name_en"];
         $name_ar=$args["name_ar"];
-        $resturant_id=isset($args["resturant_id"])?$args["resturant_id"]:null;
-        $role1 = $this->role->update($id, $name_en, $name_ar, $resturant_id, $permissions);
+        $role1 = $this->role->update($id, $name_en, $name_ar, $permissions);
         $role1->message=trans("admin.the role was updated successfully");
         return $role1;
 

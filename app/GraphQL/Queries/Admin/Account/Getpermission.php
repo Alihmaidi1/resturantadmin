@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Queries\Admin\Account;
 
+use App\Models\resturant;
 use Illuminate\Support\Facades\Config;
 use stdClass;
 
@@ -13,8 +14,8 @@ final class Getpermission
      */
     public function __invoke($_, array $args)
     {
-
-        $arr=config("global.permssion");
+        $resturant = resturant::where("domain",request()->getHost())->count();
+        $arr=($resturant>0)?config("global.permssion"):config("global.adminPermssion");
         $keys=[];
         $values=[];
         foreach($arr as $key=>$value){

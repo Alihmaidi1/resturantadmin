@@ -6,9 +6,9 @@ namespace App\repo\interfaces;
 interface resturantinterface{
 
 
-    public function store($address,$name,$domain);
+    public function store($name,$domain);
 
-    public function update($id,$name,$address,$domain);
+    public function update($id,$name,$domain);
 
     public function find($id);
 

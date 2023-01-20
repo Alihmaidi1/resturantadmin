@@ -40,11 +40,11 @@ class adminPolicy
     public function view(admin $admin,array $injected)
     {
         $admin2=admin::find($injected["id"]);
-        if($admin->role_id==$this->superid || $admin2->id==$admin->id){
+        if($admin2->id==$admin->id){
 
             return true;
         }
-        if($admin2->resturant_id==$admin->resturant_id && $admin2->rank < $admin->rank){
+        if($admin->role_id==$this->superid||$admin2->rank < $admin->rank){
 
             return true;
         }
@@ -61,9 +61,7 @@ class adminPolicy
     public function create(admin $admin,array $injected)
     {
 
-        $adminResturant=$admin->resturant_id;
-        $resturantInput=(isset($injected["resturant_id"]))?$injected["resturant_id"]:null;
-        if($admin->role_id==$this->superid|| ($resturantInput==$adminResturant && $admin->rank > $injected["rank"])){
+        if($admin->role_id==$this->superid||$admin->rank > $injected["rank"]){
             return true;
         }
 
@@ -101,7 +99,7 @@ class adminPolicy
         }
 
 
-        if($admin->resturant_id==$admin2->resturant_id && $admin->rank > $admin2->rank && $admin->resturant_id==$injected["resturant_id"]&& $admin->rank > $injected["rank"]){
+        if($admin->rank > $admin2->rank && $admin->rank > $injected["rank"]){
 
             return true;
         }
@@ -135,15 +133,9 @@ class adminPolicy
     public function forceDelete(admin $admin,array $injected)
     {
 
-        if($admin->role_id==$this->superid){
-
-            return true;
-        }
-
-        $adminResturant=$admin->resturant_id;
         $adminRank=$admin->rank;
         $admin1=admin::find($injected["id"]);
-        if($admin1->resturant_id==$adminResturant&& $adminRank>$admin1->rank){
+        if($admin->role_id==$this->superid||$adminRank>$admin1->rank){
 
             return true;
         }

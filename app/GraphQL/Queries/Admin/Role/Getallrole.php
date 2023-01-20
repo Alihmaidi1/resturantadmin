@@ -22,9 +22,8 @@ final class Getallrole
     {
 
 
-        $resturant_id=isset($args["resturant_id"])?$args["resturant_id"]:null;
 
-        return $this->role->getAllRole($resturant_id);
+        return $this->role->getAllRole();
 
 
     }

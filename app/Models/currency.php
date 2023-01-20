@@ -21,14 +21,6 @@ class currency extends Model
     public $translatable = ['name'];
 
 
-
-    public function resturant(){
-
-
-        return $this->belongsTo(resturant::class,"resturant_id");
-    }
-
-
     public function jobs(){
 
         return $this->hasMany(currency::class,"currency_id");
@@ -45,9 +37,4 @@ class currency extends Model
         return $this->hasMany(tabletype::class,"currency_id");
     }
 
-
-    public function setting(){
-
-        return $this->hasOne(setting::class,"currency_id");
-    }
 }

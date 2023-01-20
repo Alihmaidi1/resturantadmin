@@ -27,7 +27,6 @@ final class AddroleValidator extends Validator
             "name_ar"=>["required"],
             "name_en"=>["required"],
             "permission"=>["array","required",new checkPermission],
-            "resturant_id"=>["exists:resturants,id"],
 
 
         ];
@@ -43,7 +42,6 @@ final class AddroleValidator extends Validator
             "name_ar.required"=>trans("admin.name in arabic is required"),
             "name_en.required"=>trans("admin.name in english is required"),
             "permission.array"=>trans("admin.permission should be array"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
         ];
     }

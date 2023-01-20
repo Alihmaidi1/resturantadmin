@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Models\resturant;
 use Illuminate\Contracts\Validation\Rule;
 
 class checkPermission implements Rule
@@ -25,9 +26,11 @@ class checkPermission implements Rule
      */
     public function passes($attribute, $value)
     {
+        $resturant = resturant::where("domain",request()->getHost())->count();
+        $permissions=($resturant>0)?config("global.permssion"):config("global.adminPermssion");
         $counter=0;
         foreach($value as $permission){
-            foreach(config("global.permssion") as $key=>$per){
+            foreach($permissions as $key=>$per){
                 if($key==$permission){
 
                     $counter++;

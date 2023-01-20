@@ -1,93 +1,109 @@
 <?php return array (
 
+
 "lang"=>[
     "ar",
     "en"
+],
+"adminPermssion"=>[
+
+    'admin' =>[
+                'en' => 'Controll in Admins',
+                'ar' => 'التحكم في الادمن',
+            ],
+
+    'role' =>[
+                'en' => 'Controll in Roles',
+                'ar' => 'التحكم في الصلاحيات',
+            ],
+    'resturant' =>[
+                'en' => 'Controll in Resturants',
+                'ar' => 'التحكم في المطاعم',
+            ],
+    'setting' =>[
+              'en' => 'Controll in Setting',
+              'ar' => 'التحكم في الاعدادت',
+            ],
 ]
 ,
 'permssion' =>
 array (
-'category' =>
-array (
-  'en' => 'Controll in Categories',
-  'ar' => 'التحكم في الاصناف',
-),
-'admin' =>
-array (
-  'en' => 'Controll in Admins',
-  'ar' => 'التحكم في الادمن',
-),
+    'category' =>
+    array (
+    'en' => 'Controll in Categories',
+    'ar' => 'التحكم في الاصناف',
+    ),
+    'admin' =>
+    array (
+    'en' => 'Controll in Admins',
+    'ar' => 'التحكم في الادمن',
+    ),
 
-'role' =>
-array (
-  'en' => 'Controll in Roles',
-  'ar' => 'التحكم في الصلاحيات',
-),
-'resturant' =>
-array (
-  'en' => 'Controll in Resturants',
-  'ar' => 'التحكم في المطاعم',
-),
-'tabletype' =>
-array (
-  'en' => 'Controll in Table Types',
-  'ar' => 'التحكم في أنواع الطاولات',
-),
-'currency' =>
-array (
-  'en' => 'Controll in Currencies',
-  'ar' => 'التحكم في العملات',
-),
-'table' =>
-array (
-  'en' => 'Controll in Tables',
-  'ar' => 'التحكم في الطاولات',
-),
-'storehouse' =>
-array (
-  'en' => 'Controll in Storehouses',
-  'ar' => 'التحكم في المخازن',
-),
-'good' =>
-array (
-  'en' => 'Controll in Goods',
-  'ar' => 'التحكم في البضائع',
-),
-'job' =>
-array (
-  'en' => 'Controll in Jobs',
-  'ar' => 'التحكم في الوظائف',
-),
-'employee' =>
-array (
-  'en' => 'Controll in Employees',
-  'ar' => 'التحكم في  الموظفين',
-),
-'setting' =>
-array (
-  'en' => 'Controll in Setting',
-  'ar' => 'التحكم في الاعدادت',
-),
-'slider' =>
-array (
-  'en' => 'Controll in Sliders',
-  'ar' => 'التحكم في العناصر المتحركة',
-),
-'banner' =>
-array (
-  'en' => 'Controll in Banners',
-  'ar' => 'التحكم في البنرات',
-),
-'food' =>
-array (
-  'en' => 'Controll in Food',
-  'ar' => 'التحكم في الطعام',
-),
-'experience' =>
-array (
-  'en' => 'Controll in Experience Employee',
-  'ar' => 'التحكم في خبرة الموظف',
-),
+    'role' =>
+    array (
+    'en' => 'Controll in Roles',
+    'ar' => 'التحكم في الصلاحيات',
+    ),
+    'tabletype' =>
+    array (
+    'en' => 'Controll in Table Types',
+    'ar' => 'التحكم في أنواع الطاولات',
+    ),
+    'currency' =>
+    array (
+    'en' => 'Controll in Currencies',
+    'ar' => 'التحكم في العملات',
+    ),
+    'table' =>
+    array (
+    'en' => 'Controll in Tables',
+    'ar' => 'التحكم في الطاولات',
+    ),
+    'storehouse' =>
+    array (
+    'en' => 'Controll in Storehouses',
+    'ar' => 'التحكم في المخازن',
+    ),
+    'good' =>
+    array (
+    'en' => 'Controll in Goods',
+    'ar' => 'التحكم في البضائع',
+    ),
+    'job' =>
+    array (
+    'en' => 'Controll in Jobs',
+    'ar' => 'التحكم في الوظائف',
+    ),
+    'employee' =>
+    array (
+    'en' => 'Controll in Employees',
+    'ar' => 'التحكم في  الموظفين',
+    ),
+    'setting' =>
+    array (
+    'en' => 'Controll in Setting',
+    'ar' => 'التحكم في الاعدادت',
+    ),
+    'slider' =>
+    array (
+    'en' => 'Controll in Sliders',
+    'ar' => 'التحكم في العناصر المتحركة',
+    ),
+    'banner' =>
+    array (
+    'en' => 'Controll in Banners',
+    'ar' => 'التحكم في البنرات',
+    ),
+    'food' =>
+    array (
+    'en' => 'Controll in Food',
+    'ar' => 'التحكم في الطعام',
+    ),
+    'experience' =>
+    array (
+    'en' => 'Controll in Experience Employee',
+    'ar' => 'التحكم في خبرة الموظف',
+    ),
 ),
 'settings' =>
 array (

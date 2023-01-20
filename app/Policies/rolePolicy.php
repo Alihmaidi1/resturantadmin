@@ -51,18 +51,6 @@ class rolePolicy
     public function create(admin $admin,array $injected)
     {
 
-        if($admin->resturant_id==null){
-
-            return true;
-        }
-        $resturant_id = isset($injected["resturant_id"]) ? $injected["resturant_id"] : null;
-        if($admin->resturant_id==$resturant_id){
-
-            return true;
-        }
-
-        return $this->deny(trans("admin.you don't have permmssion to create role"));
-
 
     }
 
@@ -76,17 +64,6 @@ class rolePolicy
     public function update(admin $admin,array $injected)
     {
 
-        if($admin->resturant_id==null){
-
-            return true;
-        }
-        $role = role::find($injected["id"]);
-        $resturant_id=isset($injected["resturant_id"])?$injected["resturant_id"]:null;
-        if($admin->resturant_id==$role->resturant_id&&$admin->resturant_id==$resturant_id){
-            return true;
-        }
-
-        return $this->deny(trans("admin.you don't have permmssion to edit role"));
 
     }
 
@@ -99,17 +76,6 @@ class rolePolicy
      */
     public function delete(admin $admin, array $injected)
     {
-
-        if($admin->resturant_id==null){
-
-            return true;
-        }
-        $role = role::find($injected["id"]);
-        if($admin->resturant_id==$role->resturant_id){
-
-            return true;
-        }
-        return $this->deny(trans("admin.you don't have permmssion to delete role"));
 
 
 

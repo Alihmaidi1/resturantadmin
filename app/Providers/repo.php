@@ -9,6 +9,7 @@ use App\repo\classes\good;
 use App\repo\classes\resturant;
 use App\repo\classes\role;
 use App\repo\classes\storehouse;
+use App\repo\classes\table;
 use App\repo\classes\tabletype;
 use App\repo\interfaces\accountinterface;
 use App\repo\interfaces\cloudinterface;
@@ -17,6 +18,7 @@ use App\repo\interfaces\goodinterface;
 use App\repo\interfaces\resturantinterface;
 use App\repo\interfaces\roleinterface;
 use App\repo\interfaces\storehouseinterface;
+use App\repo\interfaces\tableinterface;
 use App\repo\interfaces\tabletypeinterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,6 +39,7 @@ class repo extends ServiceProvider
         $this->app->bind(tabletypeinterface::class,tabletype::class);
         $this->app->bind(storehouseinterface::class,storehouse::class);
         $this->app->bind(goodinterface::class,good::class);
+        $this->app->bind(tableinterface::class,table::class);
 
     }
 

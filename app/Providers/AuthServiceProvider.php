@@ -5,11 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 
 use App\Models\admin;
-use App\Models\aws;
 use App\Models\banner;
 use App\Models\category;
 use App\Models\chat;
-use App\Models\currency;
 use App\Models\currency_resturant;
 use App\Models\employee;
 use App\Models\employee_experience;
@@ -21,13 +19,10 @@ use App\Models\role;
 use App\Models\setting;
 use App\Models\slider;
 use App\Models\storehouse;
-use App\Models\table;
-use App\Models\tabletype;
 use App\Policies\adminPolicy;
 use App\Policies\bannerPolicy;
 use App\Policies\categoryPolicy;
 use App\Policies\chatPolicy;
-use App\Policies\currencyPolicy;
 use App\Policies\employeePolicy;
 use App\Policies\experiencePolicy;
 use App\Policies\foodPolicy;
@@ -38,8 +33,6 @@ use App\Policies\rolePolicy;
 use App\Policies\settingPolicy;
 use App\Policies\sliderPolicy;
 use App\Policies\storehousePolicy;
-use App\Policies\tablePolicy;
-use App\Policies\tabletypePolicy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Config;
@@ -61,9 +54,6 @@ class AuthServiceProvider extends ServiceProvider
         employee_experience::class=>experiencePolicy::class,
         employee::class=>employeePolicy::class,
         category::class=>categoryPolicy::class,
-        currency::class=>currencyPolicy::class,
-        tabletype::class=>tabletypePolicy::class,
-        table::class=>tablePolicy::class,
         storehouse::class=>storehousePolicy::class,
         good::class=>goodPolicy::class,
         goodstore::class=>goodstorePolicy::class,
@@ -98,10 +88,14 @@ class AuthServiceProvider extends ServiceProvider
 
         });
 
+        Gate::define("currency", function () {
 
-        foreach(Config::get("global.permssion") as $name=>$value){
+            return true;
 
-            Gate::define($name,function(admin $admin) use($name){
+        });
+        foreach(Config::get("global.adminPermssion") as $name=>$value){
+
+            Gate::define($name, function (admin $admin) use ($name) {
 
                 $permissions=$admin->role->permssions;
                 foreach($permissions as $permission){
@@ -120,11 +114,29 @@ class AuthServiceProvider extends ServiceProvider
             }
 
 
+            foreach(Config::get("global.permssion") as $name=>$value){
 
+                Gate::define($name, function (admin $admin) use ($name) {
+    
+                    $permissions=$admin->role->permssions;
+                    foreach($permissions as $permission){
+    
+                        if($permission==$name){
+    
+                            return true;
+                        }
+    
+                    }
+    
+                    return false;
+    
+                });
+    
+                }
+    
 
 
         Passport::tokensExpireIn(Carbon::now()->addMinutes(60));
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(5));
-
     }
 }

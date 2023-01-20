@@ -14,17 +14,8 @@ final class UpdateemailValidator extends Validator
      */
     public function rules(): array
     {
-        $inputs=$this->args->toArray();
-        $email=isset($inputs["email"])?$inputs["email"]:null;
         return [
-            "email" => [
-                "required",
-                Rule::unique("admins")->where(function ($query) use ($email) {
-
-                    return $query->where("email", $email)->where("resturant_id",auth("api")->user()->resturant_id);
-
-            })->ignore(auth()->user()->id)
-            ],
+            "email" => ["required","unique:admins,email,".auth()->user()->id],
             "name"=>["required"],
             "age"=>["integer"],
             "gender"=>["in:0,1"]

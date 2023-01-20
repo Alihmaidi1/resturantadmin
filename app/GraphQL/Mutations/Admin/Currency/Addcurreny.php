@@ -27,9 +27,8 @@ final class Addcurreny
         $name_en = $args["name_en"];
         $name_ar = $args["name_ar"];
         $precent_value_in_dular = $args["precent_value_in_dular"];
-        $resturant_id = $args["resturant_id"];
         $is_default = $args["is_default"];
-        $currency=$this->currency->store($code,$name_en,$name_ar,$precent_value_in_dular,$resturant_id,$is_default);
+        $currency=$this->currency->store($code,$name_en,$name_ar,$precent_value_in_dular,$is_default);
         $currency->message=trans("admin.the currency was created successfully");
         return $currency;
 

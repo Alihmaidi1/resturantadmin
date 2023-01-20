@@ -22,7 +22,6 @@ final class Createadmin
     }
     public function __invoke($_, array $args)
     {
-        $resturantID = isset($args["resturant_id"]) ? $args["resturant_id"] : null;
         $email = $args["email"];
         $password = $args["password"];
         $role_id = $args["role_id"];
@@ -30,7 +29,7 @@ final class Createadmin
         $name = isset($args["name"]) ? $args["name"] : null;
         $age = isset($args["age"]) ? $args["age"] : null;
         $gender = isset($args["gender"]) ? $args["gender"] : null;
-        $admin=$this->account->createAdmin($email, $password, $role_id, $rank, $name, $age, $resturantID, $gender);
+        $admin=$this->account->createAdmin($email, $password, $role_id, $rank, $name, $age, $gender);
         $admin->message=trans("admin.the admin was created successfully");
         return $admin;
 

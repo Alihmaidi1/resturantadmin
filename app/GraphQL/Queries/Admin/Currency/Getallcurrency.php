@@ -20,7 +20,7 @@ final class Getallcurrency
     }
     public function __invoke($_, array $args)
     {
-        return $this->currency->getAllCurrencyInResturant($args["resturant_id"]);
+        return $this->currency->getAllCurrencyInResturant();
 
     }
 }

@@ -15,8 +15,7 @@ final class Resetemail
      */
     public function __invoke($_, array $args)
     {
-        $resturantID = (isset($args["resturant_id"]) ? $args["resturant_id"] : null);
-        $admin=admin::where("email",$args['email'])->where("resturant_id",$resturantID)->first();
+        $admin=admin::where("email",$args['email'])->first();
         $token=auth("reset_password")->login($admin);
         $number=rand(100000,999999);
         $admin->reset_code=Hash::make($number);

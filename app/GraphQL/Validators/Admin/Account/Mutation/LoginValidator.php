@@ -17,7 +17,6 @@ final class LoginValidator extends Validator
 
             "email"=>["email","required"],
             "password"=>["required"],
-            "resturant_id"=>["exists:resturants,id"]
 
 
         ];

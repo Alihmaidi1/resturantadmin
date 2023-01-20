@@ -2,7 +2,9 @@
 
 namespace App\GraphQL\Validators\Admin\Role\Mutation;
 
+use App\Models\role;
 use App\Rules\checkPermission;
+use Illuminate\Validation\Rule;
 use Nuwave\Lighthouse\Validation\Validator;
 
 final class EditroleValidator extends Validator
@@ -20,8 +22,7 @@ final class EditroleValidator extends Validator
             "name_ar"=>["required"],
             "name_en"=>["required"],
             "permission"=>["array","required",new checkPermission],
-            "id"=>["required","not_in:1","exists:roles,id"],
-            "resturant_id"=>["exists:resturants,id"]
+            "id"=>["required","exists:roles,id",Rule::notIn(role::first()->id)],
 
 
         ];

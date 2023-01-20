@@ -8,27 +8,25 @@ use App\repo\interfaces\tabletypeinterface;
 
 class tabletype implements tabletypeinterface{
 
-    public function store($name_en,$name_ar,$price,$currency_id,$resturant_id){
+    public function store($name_en,$name_ar,$price,$currency_id){
 
         return ModelsTabletype::create([
             "name"=>["en"=>$name_en,"ar"=>$name_ar],
             "price"=>$price,
-            "currency_id"=>$currency_id,
-            "resturant_id"=>$resturant_id
+            "currency_id"=>$currency_id
         ]);
 
 
 
     }
 
-    public function update($id,$name_en,$name_ar,$price,$currency_id,$resturant_id){
+    public function update($id,$name_en,$name_ar,$price,$currency_id){
 
 
         $tabletype = ModelsTabletype::findOrFail($id);
         $tabletype->name = ["en" => $name_en, "ar" => $name_ar];
         $tabletype->price = $price;
         $tabletype->currency_id = $currency_id;
-        $tabletype->resturant_id = $resturant_id;
         $tabletype->save();
         return $tabletype;
 

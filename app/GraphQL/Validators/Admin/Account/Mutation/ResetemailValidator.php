@@ -15,7 +15,6 @@ final class ResetemailValidator extends Validator
     {
         return [
             "email"=>["email","required","exists:admins,email"],
-            "resturant_id"=>["exists:resturants,id"]
 
         ];
     }
@@ -27,7 +26,6 @@ final class ResetemailValidator extends Validator
             "email.required"=>trans("admin.email field is required"),
             "email.email"=>trans("admin.email field should be email"),
             "email.exists"=>trans("admin.your data not exists in our system"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
         ];
     }

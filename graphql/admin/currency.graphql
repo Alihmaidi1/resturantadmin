@@ -1,14 +1,13 @@
 
 extend type Mutation {
-
-    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard @can(model:"App\\Models\\currency",ability:"currency") @can(model:"App\\Models\\currency",ability:"create",injectArgs:true)
-    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,resturant_id:ID,is_default:Int): Currency @validator @guard  @can(model:"App\\Models\\currency",ability:"currency") @can(model:"App\\Models\\currency",ability:"update",injectArgs:true)
-    deletecurrency(id:ID): Currency @validator @guard @can(ability:"currency",model:"App\\Models\\currency")
+    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,is_default:Int): Currency @validator @guard @can(ability:"currency",model:"App\\Models\\admin") 
+    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,is_default:Int): Currency @validator @guard  @can(model:"App\\Models\\admin",ability:"currency") 
+    deletecurrency(id:ID): Currency @validator @guard @can(ability:"currency",model:"App\\Models\\admin")
 }
 
 extend type Query{
 
-    getallcurrency(resturant_id:ID): [Currency]   @validator
+    getallcurrency: [Currency]
 
 
 }
@@ -20,7 +19,6 @@ type Currency{
     name:String
     precent_value_in_dular:String
     message: String
-    resturant:Resturant @belongsTo
     is_default_for_website:String
     tabletypes: [tabletype] @hasMany
     foods:[Food!] @hasMany

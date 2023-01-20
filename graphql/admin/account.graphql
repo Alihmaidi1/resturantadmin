@@ -1,5 +1,5 @@
 extend type Query{
-    getalladmin(resturant_id:ID):[Admin!]  @guard @can(model:"App\\Models\\admin",ability:"admin")
+    getalladmin:[Admin!]  @guard @can(model:"App\\Models\\admin",ability:"admin")
     me:Admin @guard @auth
     getpermission:PermissionArray @guard @can(ability:"role",model:"App\\Models\\admin")
     admininfo(id:ID):Admin @guard @validator @can(model:"App\\Models\\admin",ability:"admin") @can(model:"App\\Models\\admin",ability:"view",injectArgs: true)
@@ -8,16 +8,16 @@ extend type Query{
 
 extend type Mutation{
 
-    login(email:String,password:String,resturant_id:ID):Admin!   @validator
+    login(email:String,password:String):Admin!   @validator
     token(your_refresh_token: String!): Token! @validator
-    resetemail(email:String,resturant_id:ID):Message1  @validator
+    resetemail(email:String):Message1  @validator
     logout:Admin @guard
     changepassword(password:String):Admin @validator @guard
     checkresetcode(code:String):Message1 @validator @guard(with:["reset_password"])
-    createadmin(email:String,password:String,role_id:ID,resturant_id:ID,rank:Int,name:String,age:Int,gender:Int):Admin @guard @validator @can(model:"App\\Models\\admin",ability: "create", injectArgs: true) @can(model:"App\\Models\\admin",ability:"admin")
+    createadmin(email:String,password:String,role_id:ID,rank:Int,name:String,age:Int,gender:Int):Admin @guard @validator @can(model:"App\\Models\\admin",ability: "create", injectArgs: true) @can(model:"App\\Models\\admin",ability:"admin")
     deleteadmin(id:ID):Admin @guard @validator @can(model:"App\\Models\\admin",ability:"admin") @can(model:"App\\Models\\admin",ability:"forceDelete",injectArgs:true)
     updateemail(email:String,name:String,age:Int,gender:Int): Admin @guard @validator
-    updateadmin(id:ID,email:String,role_id:ID,resturant_id:ID,rank:Int,password:String,name:String,age:Int,gender:Int): Admin @guard @validator  @can(model:"App\\Models\\admin",ability:"admin") @can(model:"App\\Models\\admin",ability:"update",injectArgs:true)
+    updateadmin(id:ID,email:String,role_id:ID,rank:Int,password:String,name:String,age:Int,gender:Int): Admin @guard @validator  @can(model:"App\\Models\\admin",ability:"admin") @can(model:"App\\Models\\admin",ability:"update",injectArgs:true)
 }
 
 
@@ -32,7 +32,6 @@ type Admin{
     email:String
     role:Role @belongsTo
     rank:Int
-    resturant: Resturant @belongsTo
 }
 
 

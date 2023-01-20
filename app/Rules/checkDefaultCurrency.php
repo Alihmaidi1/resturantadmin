@@ -12,13 +12,12 @@ class checkDefaultCurrency implements Rule
      *
      * @return void
      */
-    public $resturant_id;
     public $currency_id;
-    public function __construct($resturant_id,$currency_id=null)
+    public $value;
+    public function __construct($value,$currency_id=null)
     {
         $this->currency_id = $currency_id;
-        $this->resturant_id = $resturant_id;
-
+        $this->value = $value;
     }
 
     /**
@@ -31,17 +30,29 @@ class checkDefaultCurrency implements Rule
     public function passes($attribute, $value)
     {
 
-        if($this->currency_id==null){
 
-        $count = currency::where("resturant_id",$this->resturant_id)->where("is_default_for_website",1)->count();
-
+        if($this->currency_id==null&&$this->value==1){
+ 
+                $count = currency::where("is_default_for_website",1)->count();
         }else{
 
-        $count = currency::where("id","!=",$this->currency_id)->where("resturant_id",$this->resturant_id)->where("is_default_for_website",1)->count();
-
+            $count = 0;
 
         }
 
+        if($this->currency_id!=null){
+
+            $currency = currency::find($this->currency_id);
+            if(($currency->is_default_for_website==0&&$this->value==1)||($currency->is_default_for_website==1&&$this->value==0)){
+
+                $count = 1;
+            }
+
+        
+        }
+
+
+        
         if($count>0){
 
             return false;
@@ -57,6 +68,6 @@ class checkDefaultCurrency implements Rule
      */
     public function message()
     {
-        return trans("admin.the resturant has already default currency");
+        return trans("admin.the resturant has already default currency or you should not have default value");
     }
 }

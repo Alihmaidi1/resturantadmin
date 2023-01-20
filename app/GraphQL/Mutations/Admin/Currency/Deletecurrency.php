@@ -20,6 +20,7 @@ final class Deletecurrency
     }
     public function __invoke($_, array $args)
     {
+        
         $currency1 = $this->currency->delete($args["id"]);
         $currency1->message=trans("admin.the currency was deleted successfully");
         return $currency1;

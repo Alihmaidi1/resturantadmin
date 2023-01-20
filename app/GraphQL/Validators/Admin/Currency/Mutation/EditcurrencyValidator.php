@@ -16,18 +16,15 @@ final class EditcurrencyValidator extends Validator
     {
 
         $inputs = $this->args->toArray();
-        $resturant_id = isset($inputs["resturant_id"])?$inputs["resturant_id"]:null;
         $currency_id = isset($inputs["id"]) ? $inputs["id"] : null;
+        $default = isset($inputs["is_default"]) ? $inputs["is_default"] : null;
         return [
-
             "id"=>["required","exists:currencies,id"],
-            "code"=>["required"],
+            "code"=>["required","unique:currencies,code,".$currency_id],
             "name_en"=>["required"],
             "name_ar"=>["required"],
             "precent_value_in_dular"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"],
-            "is_default"=>["required",new checkDefaultCurrency($resturant_id,$currency_id)]
-
+            "is_default"=>["required",new checkDefaultCurrency($default,$currency_id)]
         ];
     }
 
@@ -42,8 +39,6 @@ final class EditcurrencyValidator extends Validator
             "name_ar.required"=>trans("admin.the name in arabic is required"),
             "precent_value_in_dular.required"=>trans("admin.the precent value in dular is required"),
             "is_default_for_website.required"=>trans("admin.the field is default is required"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
             "is_default.required"=>trans("admin.is default is required")
         ];
     }

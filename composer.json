@@ -31,7 +31,7 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders"
         },
         "files": ["app/Helper/helper.php"]
 
@@ -46,11 +46,11 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
               "php artisan key:generate",
-            "php artisan migrate:refresh",
-            "php artisan passport:client --password",
+            "php artisan migrate:refresh --database=system --path=database/migrations/root",
+            "php artisan passport:client --password --name=default --provider=admins",
             "php artisan passport:install",
-            "php artisan db:seed",
-            "php artisan passport:client --personal"
+            " php artisan db:seed --class=Database\\\\Seeders\\\\Root\\\\DatabaseSeeder",
+            "php artisan passport:client --personal --name=default"
 
 
         ],

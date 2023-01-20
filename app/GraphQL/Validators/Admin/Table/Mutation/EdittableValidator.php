@@ -21,7 +21,6 @@ final class EdittableValidator extends Validator
             "description_en"=>["required"],
             "description_ar"=>["required"],
             "status"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"],
             "type_id"=>["required","exists:tabletypes,id"],
             "id"=>["required","exists:tables,id"]
 
@@ -39,8 +38,6 @@ final class EdittableValidator extends Validator
             "description_en.required"=>trans("admin.the description in english is required"),
             "description_ar.required"=>trans("admin.the description in arabic is required"),
             "status.required"=>trans("admin.status is required"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant is not exists in our data"),
             "type_id.required"=>trans("admin.table type is required"),
             "type_id.exists"=>trans("admin.table type is not exists in our data"),
             "id.required"=>trans("admin.id is required"),

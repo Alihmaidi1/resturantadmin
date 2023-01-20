@@ -24,9 +24,8 @@ final class Editresturant
     {
         $id=$args["id"];
         $name=$args["name"];
-        $address=$args["address"];
         $domain=$args["domain"];
-        $resturant=$this->resturant->update($id, $name, $address, $domain);
+        $resturant=$this->resturant->update($id, $name, $domain);
         Cache::put("resturant:".$resturant->id,$resturant);
         Cache::pull("resturants");
         $resturant->message=trans("admin.the resturant was updated successfully");

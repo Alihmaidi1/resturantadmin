@@ -13,13 +13,14 @@ final class EditresturantValidator extends Validator
      */
     public function rules(): array
     {
+        $args = $this->args->toArray();
+        $id = isset($args["id"]) ? $args["id"] : null;
         return [
 
 
             "id"=>["required","exists:resturants,id"],
-            "address"=>["required","string"],
             "name"=>["required","string"],
-            "domain"=>["required"]
+            "domain"=>["required","unique:resturants,domain,".$id]
         ];
     }
 
@@ -28,14 +29,12 @@ final class EditresturantValidator extends Validator
 
         return [
 
-            "address.required"=>trans("admin.the address is required"),
-            "address.string"=>trans("admin.the address should be string"),
             "name.required"=>trans("admin.the name is required"),
             "name.string"=>trans("admin.the name should be string"),
             "id.required"=>trans("admin.id is required"),
             "id.exists"=>trans("admin.id is not exists in our data"),
-            "domain.required"=>trans("admin.the domain is required")
-
+            "domain.required"=>trans("admin.the domain is required"),
+            "domain.unique"=>trans("admin.this domain is exists")
 
         ];
 

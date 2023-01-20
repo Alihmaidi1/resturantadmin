@@ -21,9 +21,7 @@ final class Changepassword
 
         $admin->message=trans("admin.the password was updated successfully");
 
-        $arr["email"] = $admin->email;
-        $arr["resturant_id"] = $admin->resturant_id;
-        $token = tokenInfo($arr,$args['password'],"admins");
+        $token = tokenInfo($admin->email,$args['password'],"admins");
 
         if($token->status()==200){
             $admin->token_info=$token->json();

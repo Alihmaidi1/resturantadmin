@@ -2,6 +2,9 @@
 
 namespace App\GraphQL\Validators\Admin\Role\Mutation;
 
+use App\Models\role;
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Rule as ValidationRule;
 use Nuwave\Lighthouse\Validation\Validator;
 
 final class DeleteroleValidator extends Validator
@@ -15,7 +18,9 @@ final class DeleteroleValidator extends Validator
     {
         return [
 
-            "id"=>["required","not_in:1","exists:roles,id"]
+            "id"=>["required","exists:roles,id",
+            ValidationRule::notIn(role::first()->id)
+            ]
 
 
         ];

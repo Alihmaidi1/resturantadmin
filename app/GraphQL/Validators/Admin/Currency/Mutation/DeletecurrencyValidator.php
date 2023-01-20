@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Validators\Admin\Currency\Mutation;
 
+use App\Rules\deleteNotDefaultRule;
 use Nuwave\Lighthouse\Validation\Validator;
 
 final class DeletecurrencyValidator extends Validator
@@ -15,7 +16,7 @@ final class DeletecurrencyValidator extends Validator
     {
         return [
 
-            "id"=>["required","exists:currencies,id"]
+            "id"=>["required","exists:currencies,id",new deleteNotDefaultRule]
 
         ];
     }

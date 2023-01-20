@@ -17,8 +17,7 @@ class account implements accountinterface{
             return admin::where("id","!=",auth()->user()->id)->get();
         }else{
 
-            $adminResturant=auth("api")->user()->resturant_id;
-            return admin::where("resturant_id",$adminResturant)->where("rank","<",$adminRank)->get();
+            return admin::where("rank","<",$adminRank)->get();
         }
 
 
@@ -41,7 +40,7 @@ class account implements accountinterface{
     }
 
 
-    public function createAdmin($email,$password,$role_id,$rank,$name,$age,$resturant_id,$gender){
+    public function createAdmin($email,$password,$role_id,$rank,$name,$age,$gender){
 
 
 
@@ -49,7 +48,6 @@ class account implements accountinterface{
             "email"=>$email,
             "password"=>Hash::make($password),
             "role_id"=>$role_id,
-            "resturant_id"=>$resturant_id,
             "rank"=>$rank,
             "name"=>$name,
             "age"=>$age,
@@ -71,11 +69,10 @@ class account implements accountinterface{
 
     }
 
-    public function updateAdmin($id,$email,$role_id,$resturant_id,$rank,$password,$name,$age,$gender){
+    public function updateAdmin($id,$email,$role_id,$rank,$password,$name,$age,$gender){
 
         $admin = admin::findOrFail($id);
         $admin->email = $email;
-        $admin->resturant_id = $resturant_id;
         $admin->role_id = $role_id;
         $admin->rank = $rank;
         if($password!=null){

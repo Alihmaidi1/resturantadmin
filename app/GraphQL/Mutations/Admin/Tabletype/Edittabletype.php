@@ -26,8 +26,7 @@ final class Edittabletype
         $name_ar=$args["name_ar"];
         $price=$args["price"];
         $currency_id=$args["currency_id"];
-        $resturant_id=$args["resturant_id"];
-        $tabletype=$this->tabletype->update($id, $name_en, $name_ar, $price, $currency_id, $resturant_id);
+        $tabletype=$this->tabletype->update($id, $name_en, $name_ar, $price, $currency_id);
         $tabletype->message=trans("admin.the table type was updated successfully");
         return $tabletype;
 

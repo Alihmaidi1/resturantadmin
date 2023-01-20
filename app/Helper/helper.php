@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Config;
@@ -80,15 +81,14 @@ use Illuminate\Support\Facades\Storage;
 
 
 
-    function tokenInfo($arr,$password,$provider="admins"){
+    function tokenInfo($email,$password,$provider="admins"){
 
         $client= DB::table('oauth_clients')->where("provider",$provider)->first();
-
-        return Http::asForm()->post(env("APP_URL")."/oauth/token",[
+        return Http::asForm()->post(request()->root()."/oauth/token",[
                 'grant_type' => 'password',
                 'client_id' =>$client->id,
                 'client_secret' => $client->secret ,
-                'username' => json_encode($arr),
+                'username' => $email ,
                 'password' => $password
         ]);
 
@@ -99,12 +99,25 @@ use Illuminate\Support\Facades\Storage;
 
     function refreshToken($refreshToken,$provider="admins"){
         $client=DB::table('oauth_clients')->where("provider",$provider)->first();
-        return  Http::asForm()->post(env("APP_URL")."/oauth/token",[
+        return  Http::asForm()->post(request()->root()."/oauth/token",[
             'grant_type' => 'refresh_token',
             'refresh_token' => $refreshToken,
             'client_id' => $client->id,
             'client_secret' => $client->secret,
         ]);
+    }
+
+
+    function changeDatabaseConnection($databaseName){
+
+        DB::purge("system");
+        Config::set("database.connections.tenant.database",$databaseName);
+        Config::set("database.default", "tenant");
+        DB::reconnect("tenant");
+        // Config::set("global.connectionType", 2);
+        DB::setDefaultConnection("tenant");
+        return true;
+
     }
 
 

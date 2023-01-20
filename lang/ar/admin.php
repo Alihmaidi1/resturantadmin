@@ -306,7 +306,9 @@ return [
     "you don't have permmssion to update good"=>"أنت لا تملك صلاحيات تعديل بضاعة",
     "you don't have permmssion to show good"=>"انت لا تملك صلاحيات لعرض البضاعة",
     "you don't have permmssion to delete good"=>"انت لا تملك صلاحيات لحذف البضاعة",
-
+    "this domain is exists"=>"هذا الدومين موجود مسبقا",
+    "the resturant has already default currency or you should not have default value"=>"المطعم يملك مسبقا عملة افتراضية او أنت يجب أن يكون لديك عملة افتراضية للمطعم",
+    "you can't delete default currency"=>"لا تستطيع حذف العملة الافتراضية",
 
 
 

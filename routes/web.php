@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\admin;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/a", function () {
+Route::get("/a", function (Request $request) {
 
-    return "ds";
+    return admin::all();
 
-});
+
+})->middleware("tenant");

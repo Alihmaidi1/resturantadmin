@@ -16,26 +16,10 @@ final class CreateadminValidator extends Validator
     public function rules(): array
     {
 
-        $inputs = $this->args->toArray();
-        $email=isset($inputs["email"])?$inputs["email"]:null;
-        $resturant_id=isset($inputs["resturant_id"])?$inputs["resturant_id"]:null;
-        $role_id = isset($inputs["role_id"]) ? $inputs["role_id"] : null;
         return [
-            "email" => [
-                "required",
-                "email",
-                Rule::unique("admins")->where(function ($query) use ($email, $resturant_id) {
-                    return $query->where("email", $email)->where("resturant_id", $resturant_id);
-                })
-
-            ],
+            "email" => ["required","email","unique:admins,email"],
             "password" => ["required"],
-            "role_id" => [
-                "required",
-                Rule::exists("roles","id")->where(function ($query) use ($role_id, $resturant_id) {
-                    return $query->where("id", $role_id)->where("resturant_id", $resturant_id);
-                })
-            ],
+            "role_id" => ["required","exists:roles,id"],
             "rank"=>["required"],
             "name"=>["string"],
             "age"=>["integer"],
@@ -55,7 +39,6 @@ final class CreateadminValidator extends Validator
             "password.required"=>trans("admin.password field is required"),
             "role_id.exists"=>trans("admin.the role is not found in our data"),
             "role_id.required"=>trans("admin.the role is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
             "rank.required"=>trans("admin.rank is required"),
             "name.string"=>trans("admin.the name should be string"),
             "age.integer"=>trans("admin.age should be integer"),

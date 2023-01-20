@@ -24,8 +24,7 @@ final class Editgood
         $id=$args["id"];
         $name_en=$args["name_en"];
         $name_ar=$args["name_ar"];
-        $resturant_id=$args["resturant_id"];
-        $good = $this->good->update($id, $name_en, $name_ar, $resturant_id);
+        $good = $this->good->update($id, $name_en, $name_ar);
         $good->message=trans("admin.the good was updated successfully");
         return $good;
 

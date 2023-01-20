@@ -24,8 +24,7 @@ final class Addgood
 
         $nane_en = $args["name_en"];
         $nane_ar = $args["name_ar"];
-        $resturant_id = $args["resturant_id"];
-        $good = $this->good->store($nane_en, $nane_ar, $resturant_id);
+        $good = $this->good->store($nane_en, $nane_ar);
         $good->message=trans("admin.the good was added successfully");
         return $good;
 

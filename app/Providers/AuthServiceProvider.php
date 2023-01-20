@@ -12,13 +12,11 @@ use App\Models\currency_resturant;
 use App\Models\employee;
 use App\Models\employee_experience;
 use App\Models\food;
-use App\Models\good;
 use App\Models\goodstore;
 use App\Models\job;
 use App\Models\role;
 use App\Models\setting;
 use App\Models\slider;
-use App\Models\storehouse;
 use App\Policies\adminPolicy;
 use App\Policies\bannerPolicy;
 use App\Policies\categoryPolicy;
@@ -26,13 +24,11 @@ use App\Policies\chatPolicy;
 use App\Policies\employeePolicy;
 use App\Policies\experiencePolicy;
 use App\Policies\foodPolicy;
-use App\Policies\goodPolicy;
 use App\Policies\goodstorePolicy;
 use App\Policies\jobPolicy;
 use App\Policies\rolePolicy;
 use App\Policies\settingPolicy;
 use App\Policies\sliderPolicy;
-use App\Policies\storehousePolicy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Config;
@@ -54,8 +50,6 @@ class AuthServiceProvider extends ServiceProvider
         employee_experience::class=>experiencePolicy::class,
         employee::class=>employeePolicy::class,
         category::class=>categoryPolicy::class,
-        storehouse::class=>storehousePolicy::class,
-        good::class=>goodPolicy::class,
         goodstore::class=>goodstorePolicy::class,
         slider::class=>sliderPolicy::class,
         banner::class=>bannerPolicy::class,

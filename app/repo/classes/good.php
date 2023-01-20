@@ -8,33 +8,31 @@ use App\repo\interfaces\goodinterface;
 class good implements goodinterface{
 
 
-    public function store($name_en,$name_ar,$resturant_id){
+    public function store($name_en,$name_ar){
 
 
         return ModelsGood::create([
 
             "name"=>["en"=>$name_en,"ar"=>$name_ar],
-            "resturant_id"=>$resturant_id
         ]);
 
 
     }
 
-    public function update($id,$name_en,$name_ar,$resturant_id){
+    public function update($id,$name_en,$name_ar){
 
 
         $good=ModelsGood::findOrFail($id);
         $good->name=["en"=>$name_en,"ar"=>$name_ar];
-        $good->resturant_id=$resturant_id;
         $good->save();
         return $good;
 
 
     }
 
-    public function getAllGood($resturant_id){
+    public function getAllGood(){
 
-        return ModelsGood::where("resturant_id",$resturant_id)->get();
+        return ModelsGood::get();
     }
 
 

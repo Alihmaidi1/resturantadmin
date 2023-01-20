@@ -1,13 +1,13 @@
 extend type Mutation{
 
-    addgood(name_en:String,name_ar:String,resturant_id:ID): Good @validator @guard @can(model:"App\\Models\\good",ability:"good") @can(model:"App\\Models\\good",ability:"create",injectArgs:true)
-    editgood(id:ID,name_en:String,name_ar:String,resturant_id:ID): Good @validator @guard @can(model:"App\\Models\\good",ability:"good") @can(model:"App\\Models\\good",ability:"update",injectArgs:true)
+    addgood(name_en:String,name_ar:String): Good @validator @guard @can(model:"App\\Models\\admin",ability:"good") 
+    editgood(id:ID,name_en:String,name_ar:String): Good @validator @guard @can(model:"App\\Models\\admin",ability:"good") 
     deletegood(id:ID): Good @validator @guard @can(model:"App\\Models\\good",ability:"good") @can(model:"App\\Models\\good",ability:"delete",injectArgs:true)
 }
 
 extend type Query{
 
-    getallgood(resturant_id:ID): [Good!] @validator @guard @can(model:"App\\Models\\good",ability:"good") @can(model:"App\\Models\\good",ability:"view",injectArgs:true)
+    getallgood(resturant_id:ID): [Good!]  @guard @all(model:"App\\Models\\good") @can(model:"App\\Models\\admin",ability:"good")
 }
 
 type Good{

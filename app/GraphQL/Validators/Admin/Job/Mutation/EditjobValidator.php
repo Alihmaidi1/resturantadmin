@@ -21,7 +21,6 @@ final class EditjobValidator extends Validator
             "name_ar"=>["required"],
             "salary"=>["required"],
             "currency_id"=>["required","exists:currencies,id"],
-            "resturant_id"=>["required","exists:resturants,id"]
 
         ];
     }
@@ -37,8 +36,6 @@ final class EditjobValidator extends Validator
             "salary.required"=>trans("admin.salary is required"),
             "currency_id.required"=>trans("admin.currency id is required"),
             "currency_id.exists"=>trans("admin.currency is not exists in our data"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
         ];
     }

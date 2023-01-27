@@ -7,6 +7,7 @@ use App\repo\classes\account;
 use App\repo\classes\awscloud;
 use App\repo\classes\currency;
 use App\repo\classes\good;
+use App\repo\classes\job;
 use App\repo\classes\resturant;
 use App\repo\classes\role;
 use App\repo\classes\storehouse;
@@ -17,6 +18,7 @@ use App\repo\interfaces\cloudinterface;
 use App\repo\interfaces\currencyinterface;
 use App\repo\interfaces\goodinterface;
 use App\repo\interfaces\goodstoreinterface;
+use App\repo\interfaces\jobinterface;
 use App\repo\interfaces\resturantinterface;
 use App\repo\interfaces\roleinterface;
 use App\repo\interfaces\storehouseinterface;
@@ -43,6 +45,7 @@ class repo extends ServiceProvider
         $this->app->bind(goodinterface::class,good::class);
         $this->app->bind(tableinterface::class,table::class);
         $this->app->bind(goodstoreinterface::class,goodstore::class);
+        $this->app->bind(jobinterface::class,job::class);
 
     }
 

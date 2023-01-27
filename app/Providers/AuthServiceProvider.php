@@ -46,7 +46,6 @@ class AuthServiceProvider extends ServiceProvider
 
         currency_resturant::class=>currencyPolicy::class,
         admin::class=>adminPolicy::class,
-        job::class=>jobPolicy::class,
         employee_experience::class=>experiencePolicy::class,
         employee::class=>employeePolicy::class,
         category::class=>categoryPolicy::class,

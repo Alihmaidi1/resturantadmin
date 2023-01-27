@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations\Admin\Job;
 
 use App\Models\job;
+use App\repo\interfaces\jobinterface;
 
 final class Deletejob
 {
@@ -10,13 +11,19 @@ final class Deletejob
      * @param  null  $_
      * @param  array{}  $args
      */
+
+    public $job;
+     public function __construct(jobinterface $job)
+     {
+
+        $this->job = $job;
+
+     }
     public function __invoke($_, array $args)
     {
-        $job=job::find($args["id"]);
-        $job1=$job;
-        $job->delete();
-        $job1->message=trans("admin.the job was deleted successfully");
-        return $job1;
+        $job=$this->job->delete($args["id"]);
+        $job->message=trans("admin.the job was deleted successfully");
+        return $job;
 
 
     }

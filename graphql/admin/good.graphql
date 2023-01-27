@@ -7,7 +7,7 @@ extend type Mutation{
 
 extend type Query{
 
-    getallgood(resturant_id:ID): [Good!]  @guard @all(model:"App\\Models\\good") @can(model:"App\\Models\\admin",ability:"good")
+    getallgood: [Good!]  @guard @all(model:"App\\Models\\good") @can(model:"App\\Models\\admin",ability:"good")
 }
 
 type Good{
@@ -15,6 +15,6 @@ type Good{
     id:ID
     name: String
     message:String
-    storehouses: [storehouse] @belongsToMany
+    storehouses: [Storehouse] @belongsToMany
     resturant:Resturant @belongsTo
 }

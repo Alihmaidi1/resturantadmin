@@ -10,8 +10,6 @@ extend type Query{
 
     gettableresturant: [table] @all
 
-
-
 }
 
 type table{

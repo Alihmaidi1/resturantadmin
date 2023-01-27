@@ -18,7 +18,6 @@ final class AddexperieceValidator extends Validator
             "year"=>["required"],
             "benifit"=>["required"],
             "vacation"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"]
 
         ];
     }

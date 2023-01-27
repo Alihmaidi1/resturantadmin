@@ -18,7 +18,6 @@ final class EditexperieceValidator extends Validator
             "year"=>["required"],
             "benifit"=>["required"],
             "vacation"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"],
             "id"=>["required","exists:employee_experiences,id"]
 
         ];

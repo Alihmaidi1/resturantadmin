@@ -19,7 +19,6 @@ final class AddsliderValidator extends Validator
             "logo"=>["required","mimes:png,jpg,jpeg"],
             "status"=>["required"],
             "rank"=>["required","unique:sliders,rank"],
-            "resturant_id"=>["required","exists:resturants,id"]
 
 
         ];
@@ -34,8 +33,6 @@ final class AddsliderValidator extends Validator
             "status.required"=>trans("admin.status is required"),
             "rank.required"=>trans("admin.rank is required"),
             "rank.unique"=>trans("admin.rank is exists in our data"),
-            "resturant_id.required"=>trans("admin.resturant id is not required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations\Admin\Slider;
 
 use App\Models\slider;
+use App\repo\interfaces\sliderinterface;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,17 +13,20 @@ final class Addslider
      * @param  null  $_
      * @param  array{}  $args
      */
+
+    public $slider;
+
+     public function __construct(sliderinterface $slider)
+     {
+        $this->slider = $slider;
+     }
     public function __invoke($_, array $args)
     {
 
-        $name=saveimage("resturant_".$args["resturant_id"],$args["logo"],"slider");
-        $slider=slider::create([
-            "logo"=>$name,
-            "status"=>$args["status"],
-            "rank"=>$args["rank"],
-            "resturant_id"=>$args["resturant_id"]
-        ]);
-        $slider->message=trans("admin.the slider was added successfully");
+        $logo=$args["logo"];
+        $status=$args["status"];
+        $rank=$args["rank"];
+        $slider = $this->slider->store($logo, $status, $rank);
         return $slider;
         }
 }

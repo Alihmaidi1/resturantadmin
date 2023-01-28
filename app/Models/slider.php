@@ -20,13 +20,7 @@ class slider extends Model
 
     public function getLogoattribute($value){
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
-
-    }
-
-    public function resturant(){
-
-        return $this->belongsTo(resturant::class,"resturant_id");
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
     }
 }

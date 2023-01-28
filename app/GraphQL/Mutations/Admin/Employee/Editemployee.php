@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations\Admin\Employee;
 
 use App\Models\employee;
+use App\repo\interfaces\employeeinterface;
 
 final class Editemployee
 {
@@ -10,25 +11,28 @@ final class Editemployee
      * @param  null  $_
      * @param  array{}  $args
      */
+    public $employee;
+    public function __construct(employeeinterface $employee)
+    {
+        $this->employee = $employee;
+    }
     public function __invoke($_, array $args)
     {
 
 
-        $employee=employee::find($args["id"]);
-        $employee->name=$args["name"];
-        $employee->email=$args["email"];
-        $employee->phone=$args["phone"];
-        $employee->address=$args["address"];
-        $employee->date_of_birth=$args["date_of_birth"];
-        $employee->is_empty=$args["is_empty"];
-        $employee->vacation_token=$args["vacation_token"];
-        $employee->gender=$args["gender"];
-        $employee->resturant_id=$args["resturant_id"];
-        $employee->manager_id=$args["manager_id"];
-        $employee->job_id=$args["job_id"];
-        $employee->experience_id=$args["experience_id"];
-        $employee->save();
-        $employee->message=trans("admin.the employee was updated successfully");
+        $id=$args["id"];
+        $name=$args["name"];
+        $email=$args["email"];
+        $phone=$args["phone"];
+        $address=$args["address"];
+        $date_of_birth=$args["date_of_birth"];
+        $is_empty=$args["is_empty"];
+        $vacation_token=$args["vacation_token"];
+        $gender=$args["gender"];
+        $manager_id=$args["manager_id"];
+        $job_id=$args["job_id"];
+        $experience_id=$args["experience_id"];
+        $employee = $this->employee->update($id, $name, $email, $phone, $address, $date_of_birth, $is_empty, $vacation_token, $gender, $manager_id, $job_id, $experience_id);
         return $employee;
 
     }

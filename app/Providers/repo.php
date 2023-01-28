@@ -6,6 +6,7 @@ use App\repo\classes\goodstore;
 use App\repo\classes\account;
 use App\repo\classes\awscloud;
 use App\repo\classes\currency;
+use App\repo\classes\employee;
 use App\repo\classes\experiece;
 use App\repo\classes\good;
 use App\repo\classes\job;
@@ -17,6 +18,7 @@ use App\repo\classes\tabletype;
 use App\repo\interfaces\accountinterface;
 use App\repo\interfaces\cloudinterface;
 use App\repo\interfaces\currencyinterface;
+use App\repo\interfaces\employeeinterface;
 use App\repo\interfaces\experieceinterface;
 use App\repo\interfaces\goodinterface;
 use App\repo\interfaces\goodstoreinterface;
@@ -49,6 +51,7 @@ class repo extends ServiceProvider
         $this->app->bind(goodstoreinterface::class,goodstore::class);
         $this->app->bind(jobinterface::class,job::class);
         $this->app->bind(experieceinterface::class,experiece::class);
+        $this->app->bind(employeeinterface::class,employee::class);
 
     }
 

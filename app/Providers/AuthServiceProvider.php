@@ -9,11 +9,8 @@ use App\Models\banner;
 use App\Models\category;
 use App\Models\chat;
 use App\Models\currency_resturant;
-use App\Models\employee;
-use App\Models\employee_experience;
 use App\Models\food;
 use App\Models\goodstore;
-use App\Models\job;
 use App\Models\role;
 use App\Models\setting;
 use App\Models\slider;
@@ -21,11 +18,8 @@ use App\Policies\adminPolicy;
 use App\Policies\bannerPolicy;
 use App\Policies\categoryPolicy;
 use App\Policies\chatPolicy;
-use App\Policies\employeePolicy;
-use App\Policies\experiencePolicy;
 use App\Policies\foodPolicy;
 use App\Policies\goodstorePolicy;
-use App\Policies\jobPolicy;
 use App\Policies\rolePolicy;
 use App\Policies\settingPolicy;
 use App\Policies\sliderPolicy;
@@ -46,7 +40,6 @@ class AuthServiceProvider extends ServiceProvider
 
         currency_resturant::class=>currencyPolicy::class,
         admin::class=>adminPolicy::class,
-        employee::class=>employeePolicy::class,
         category::class=>categoryPolicy::class,
         goodstore::class=>goodstorePolicy::class,
         slider::class=>sliderPolicy::class,

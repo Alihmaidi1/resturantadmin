@@ -10,6 +10,7 @@ extend type Query{
     getemployee(id:ID):Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee") 
     getallemployee: [Employee] @all(model:"App\\Models\\employee") @guard @can(model:"App\\Models\\admin",ability:"employee") 
 
+
 }
 type Employee{
 

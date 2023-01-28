@@ -14,7 +14,6 @@ final class GetbannerwhereshowValidator extends Validator
     public function rules(): array
     {
         return [
-            "resturant_id"=>["required","exists:resturants,id"],
             "where_show"=>["required"]
         ];
     }
@@ -25,8 +24,6 @@ final class GetbannerwhereshowValidator extends Validator
 
         return [
 
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
             "where_show.required"=>trans("admin.where show field is"),
 
         ];

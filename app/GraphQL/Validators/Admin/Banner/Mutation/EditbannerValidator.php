@@ -20,7 +20,6 @@ final class EditbannerValidator extends Validator
             "rank"=>["required","unique:banners,rank"],
             "url"=>["required","url"],
             "where_show"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"],
             "id"=>["required","exists:banners,id"]
 
         ];
@@ -41,8 +40,6 @@ final class EditbannerValidator extends Validator
             "url.required"=>trans("admin.url is required"),
             "url.url"=>trans("admin.url field should be url"),
             "where_show.required"=>trans("admin.where show field is"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
             "id.required"=>trans("admin.id is required"),
             "id.exists"=>trans("admin.id is not exists in our data")
 

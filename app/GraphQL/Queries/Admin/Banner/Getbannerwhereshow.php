@@ -4,6 +4,7 @@ namespace App\GraphQL\Queries\Admin\Banner;
 
 use App\Models\banner;
 use App\Models\resturant;
+use App\repo\interfaces\bannerinterface;
 use Illuminate\Support\Facades\Cache;
 
 final class Getbannerwhereshow
@@ -12,26 +13,17 @@ final class Getbannerwhereshow
      * @param  null  $_
      * @param  array{}  $args
      */
+
+    public $banner;
+     public function __construct(bannerinterface $banner)
+     {
+
+        $this->banner = $banner;
+     }
     public function __invoke($_, array $args)
     {
-
-
-        $resturant= Cache::rememberForever("resturant:".$args["resturant_id"],function()use($args){
-
-
-            return resturant::find($args["resturant_id"]);
-        });
-
-        $banners=$resturant->banners;
-        $arr=[];
-        foreach($banners as $banner){
-
-            if($banner->where_show==$args["where_show"]){
-
-                $arr[]=$banner;
-            }
-        }
-
-        return $arr;
+        $where_show = $args["where_show"];
+        $banners = $this->banner->getBannerWhereShow($where_show);
+        return $banners;
     }
 }

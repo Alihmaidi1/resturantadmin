@@ -12,20 +12,16 @@ class banner extends Model
     use HasFactory;
 
     use HasUuids;
-    public $fillable=["logo","where_show","status","url","rank","resturant_id"];
+    public $fillable=["logo","where_show","status","url","rank"];
 
     public $hidden=["created_at","updated_at"];
 
 
-    public function resturant(){
-
-        return $this->belongsTo(resturant::class,"resturant_id");
-    }
 
     public function getLogoattribute($value){
 
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
 
     }

@@ -27,7 +27,6 @@ final class EditcategoryValidator extends Validator
             "meta_logo"=>["mimes:png,jpg,jpeg"],
             "keywords"=>["required"],
             "status"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"]
 
         ];
     }
@@ -49,9 +48,7 @@ final class EditcategoryValidator extends Validator
             "keywords.required"=>trans("admin.keywords is required"),
             "status.required"=>trans("admin.status is required"),
             "id.required"=>trans("admin.id is required"),
-            "id.exists"=>trans("admin.id is not exists in our data"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
+            "id.exists"=>trans("admin.id is not exists in our data")
 
         ];
     }

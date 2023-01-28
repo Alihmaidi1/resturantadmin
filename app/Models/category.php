@@ -30,15 +30,12 @@ class category extends Model
     }
 
 
-    public function resturant(){
-
-        return $this->belongsTo(resturant::class,"resturant_id");
-    }
+    
 
     public function getLogoattribute($value){
 
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
 
     }
@@ -47,7 +44,7 @@ class category extends Model
     public function getMetaLogoattribute($value){
 
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
 
     }

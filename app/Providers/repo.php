@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\repo\classes\goodstore;
 use App\repo\classes\account;
 use App\repo\classes\awscloud;
+use App\repo\classes\category;
 use App\repo\classes\currency;
 use App\repo\classes\employee;
 use App\repo\classes\experiece;
@@ -16,6 +17,7 @@ use App\repo\classes\storehouse;
 use App\repo\classes\table;
 use App\repo\classes\tabletype;
 use App\repo\interfaces\accountinterface;
+use App\repo\interfaces\categoryinterface;
 use App\repo\interfaces\cloudinterface;
 use App\repo\interfaces\currencyinterface;
 use App\repo\interfaces\employeeinterface;
@@ -52,6 +54,7 @@ class repo extends ServiceProvider
         $this->app->bind(jobinterface::class,job::class);
         $this->app->bind(experieceinterface::class,experiece::class);
         $this->app->bind(employeeinterface::class,employee::class);
+        $this->app->bind(categoryinterface::class,category::class);
 
     }
 

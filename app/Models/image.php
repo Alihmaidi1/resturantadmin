@@ -24,7 +24,7 @@ class image extends Model
     public function getUrlattribute($value){
 
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
     }
 

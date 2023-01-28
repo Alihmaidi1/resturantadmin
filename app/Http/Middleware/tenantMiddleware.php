@@ -21,7 +21,7 @@ class tenantMiddleware
     {
             $host = $request->host();
             $resturant = resturant::where("domain", $host)->first();
-            ($resturant!=null)?changeDatabaseConnection($resturant->database_name):null;
+            ($resturant!=null)?changeDatabaseConnection($resturant->database_name,$resturant->id):null;
             return $next($request);
     }
 }

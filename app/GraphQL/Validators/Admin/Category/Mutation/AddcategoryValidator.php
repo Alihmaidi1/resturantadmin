@@ -27,7 +27,6 @@ final class AddcategoryValidator extends Validator
             "meta_logo"=>["required","mimes:png,jpg,jpeg"],
             "keywords"=>["required"],
             "status"=>["required"],
-            "resturant_id"=>["required","exists:resturants,id"]
 
         ];
     }
@@ -50,8 +49,6 @@ final class AddcategoryValidator extends Validator
             "meta_logo.mimes"=>trans("admin.meta logo should be image"),
             "keywords.required"=>trans("admin.keywords is required"),
             "status.required"=>trans("admin.status is required"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data")
 
         ];
     }

@@ -108,13 +108,13 @@ use Illuminate\Support\Facades\Storage;
     }
 
 
-    function changeDatabaseConnection($databaseName){
+    function changeDatabaseConnection($databaseName,$resturant_id=null){
 
         DB::purge("system");
         Config::set("database.connections.tenant.database",$databaseName);
-        Config::set("database.default", "tenant");
+            Config::set("database.default", "tenant");
         DB::reconnect("tenant");
-        // Config::set("global.connectionType", 2);
+        Config::set("global.resturant_id", $resturant_id);
         DB::setDefaultConnection("tenant");
         return true;
 

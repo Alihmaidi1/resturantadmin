@@ -22,21 +22,14 @@ class food extends Model
 
     public function getThumbnailattribute($value){
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
     }
 
     public function getMetaLogoattribute($value){
 
-        return Storage::disk("resturant_".$this->resturant_id)->url($value);
+        return Storage::disk("resturant:".config("global.resturant_id"))->url($value);
 
-    }
-
-
-    public function resturant(){
-
-
-        return $this->belongsTo(resturant::class,"resturant_id");
     }
 
 

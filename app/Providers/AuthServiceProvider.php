@@ -5,18 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 
 use App\Models\admin;
-use App\Models\banner;
 use App\Models\chat;
 use App\Models\currency_resturant;
-use App\Models\food;
-use App\Models\goodstore;
 use App\Models\role;
 use App\Models\setting;
 use App\Policies\adminPolicy;
-use App\Policies\bannerPolicy;
 use App\Policies\chatPolicy;
-use App\Policies\foodPolicy;
-use App\Policies\goodstorePolicy;
 use App\Policies\rolePolicy;
 use App\Policies\settingPolicy;
 use Carbon\Carbon;
@@ -36,9 +30,6 @@ class AuthServiceProvider extends ServiceProvider
 
         currency_resturant::class=>currencyPolicy::class,
         admin::class=>adminPolicy::class,
-        goodstore::class=>goodstorePolicy::class,
-        banner::class=>bannerPolicy::class,
-        food::class=>foodPolicy::class,
         setting::class=>settingPolicy::class,
         chat::class=>chatPolicy::class,
         role::class=>rolePolicy::class,

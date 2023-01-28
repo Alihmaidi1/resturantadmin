@@ -30,7 +30,6 @@ final class AddfoodValidator extends Validator
             "meta_keyword"=>["required"],
             "category_id"=>["required","exists:categories,id"],
             "currency_id"=>["required","exists:currencies,id"],
-            "resturant_id"=>["required","exists:resturants,id"],
             "price"=>["required"]
 
         ];
@@ -60,8 +59,6 @@ final class AddfoodValidator extends Validator
             "category_id.exists"=>trans("admin.category is not exists in our data"),
             "currency_id.required"=>trans("admin.currency id is required"),
             "currency_id.exists"=>trans("admin.currency id is not exists in our data"),
-            "resturant_id.required"=>trans("admin.resturant id is required"),
-            "resturant_id.exists"=>trans("admin.resturant id is not exists in our data"),
             "price.required"=>trans("admin.price is required")
 
         ];

@@ -10,6 +10,7 @@ use App\repo\classes\category;
 use App\repo\classes\currency;
 use App\repo\classes\employee;
 use App\repo\classes\experiece;
+use App\repo\classes\food;
 use App\repo\classes\good;
 use App\repo\classes\job;
 use App\repo\classes\resturant;
@@ -25,6 +26,7 @@ use App\repo\interfaces\cloudinterface;
 use App\repo\interfaces\currencyinterface;
 use App\repo\interfaces\employeeinterface;
 use App\repo\interfaces\experieceinterface;
+use App\repo\interfaces\foodinterface;
 use App\repo\interfaces\goodinterface;
 use App\repo\interfaces\goodstoreinterface;
 use App\repo\interfaces\jobinterface;
@@ -61,6 +63,7 @@ class repo extends ServiceProvider
         $this->app->bind(categoryinterface::class,category::class);
         $this->app->bind(sliderinterface::class,slider::class);
         $this->app->bind(bannerinterface::class,banner::class);
+        $this->app->bind(foodinterface::class,food::class);
 
     }
 

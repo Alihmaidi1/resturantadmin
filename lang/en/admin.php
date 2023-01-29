@@ -308,7 +308,8 @@ return [
     "this domain is exists"=>"this domain is exists",
     "the resturant has already default currency or you should not have default value"=>"the resturant has already default currency or you should not have default value",
     "you can't delete default currency"=>"you can't delete default currency",
-    
+    "your tenant or domain is not correct"=>"your tenant or domain is not correct",
+        
 
 
 

@@ -1,14 +1,14 @@
 extend type Mutation{
 
-    addtable(name:String,person_number:Int,description_en:String,description_ar:String,status:Int,type_id:ID): table @validator @guard @can(model:"App\\Models\\admin",ability:"table") 
-    edittable(id:ID,name:String,person_number:Int,description_en:String,description_ar:String,status:Int,type_id:ID): table @validator @guard @can(model:"App\\Models\\admin",ability:"table")
-    deletetable(id:ID): table @validator @guard @can(model:"App\\Models\\admin",ability:"table") 
+    addtable(name:String,person_number:Int,description_en:String,description_ar:String,status:Int,type_id:ID): table @validator @guard @can(model:"App\\Models\\admin",ability:"table") @middleware(value:"tenant") 
+    edittable(id:ID,name:String,person_number:Int,description_en:String,description_ar:String,status:Int,type_id:ID): table @validator @guard @can(model:"App\\Models\\admin",ability:"table") @middleware(value:"tenant")
+    deletetable(id:ID): table @validator @guard @can(model:"App\\Models\\admin",ability:"table")  @middleware(value:"tenant")
 
 }
 
 extend type Query{
 
-    gettableresturant: [table] @all
+    gettableresturant: [table] @all @middleware(value:"tenant")
 
 }
 

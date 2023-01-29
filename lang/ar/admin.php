@@ -309,7 +309,8 @@ return [
     "this domain is exists"=>"هذا الدومين موجود مسبقا",
     "the resturant has already default currency or you should not have default value"=>"المطعم يملك مسبقا عملة افتراضية او أنت يجب أن يكون لديك عملة افتراضية للمطعم",
     "you can't delete default currency"=>"لا تستطيع حذف العملة الافتراضية",
-
+    "your tenant or domain is not correct"=>"هذا الدومين غير صحيح",
+    
 
 
 

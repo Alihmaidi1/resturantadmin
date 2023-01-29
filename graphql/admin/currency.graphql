@@ -1,13 +1,13 @@
 
 extend type Mutation {
-    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,is_default:Int): Currency @validator @guard @can(ability:"currency",model:"App\\Models\\admin") 
-    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,is_default:Int): Currency @validator @guard  @can(model:"App\\Models\\admin",ability:"currency") 
+    addcurreny(code:String,name_ar:String,name_en:String,precent_value_in_dular: Float,is_default:Int): Currency @validator @middleware(value:"tenant") @guard @can(ability:"currency",model:"App\\Models\\admin") 
+    editcurrency(id:ID,code:String,name_en:String,name_ar:String,precent_value_in_dular: Float,is_default:Int): Currency @validator @guard @middleware(value:"tenant") @can(model:"App\\Models\\admin",ability:"currency") 
     deletecurrency(id:ID): Currency @validator @guard @can(ability:"currency",model:"App\\Models\\admin")
 }
 
 extend type Query{
 
-    getallcurrency: [Currency]
+    getallcurrency: [Currency] @middleware(value:"tenant")
 
 
 }

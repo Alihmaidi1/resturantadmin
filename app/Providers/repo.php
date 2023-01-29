@@ -7,6 +7,7 @@ use App\repo\classes\account;
 use App\repo\classes\awscloud;
 use App\repo\classes\banner;
 use App\repo\classes\category;
+use App\repo\classes\chat;
 use App\repo\classes\currency;
 use App\repo\classes\employee;
 use App\repo\classes\experiece;
@@ -23,6 +24,7 @@ use App\repo\classes\tabletype;
 use App\repo\interfaces\accountinterface;
 use App\repo\interfaces\bannerinterface;
 use App\repo\interfaces\categoryinterface;
+use App\repo\interfaces\chatinterface;
 use App\repo\interfaces\cloudinterface;
 use App\repo\interfaces\currencyinterface;
 use App\repo\interfaces\employeeinterface;
@@ -67,6 +69,7 @@ class repo extends ServiceProvider
         $this->app->bind(bannerinterface::class,banner::class);
         $this->app->bind(foodinterface::class,food::class);
         $this->app->bind(settinginterface::class,setting::class);
+        $this->app->bind(chatinterface::class,chat::class);
 
     }
 

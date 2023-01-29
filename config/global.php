@@ -38,6 +38,11 @@ array (
     'en' => 'Controll in Admins',
     'ar' => 'التحكم في الادمن',
     ),
+    'chat' =>
+    array (
+    'en' => 'Controll in Chat',
+    'ar' => 'التحكم في الدردشات',
+    ),
 
     'role' =>
     array (

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class message extends Model
 {
     use HasFactory;
-
     use HasUuids;
     public $fillable=["chat_id","content","sendBy","status","created_at"];
     public $hiiden=["chat_id","updated_at"];

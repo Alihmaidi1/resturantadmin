@@ -8,7 +8,7 @@ extend type Mutation {
 extend type Query{
 
 
-    getchatresturant(resturant_id:ID):[Chat] @guard @validator @can(ability:"view",injectArgs:true)
+    getchatresturant:[Chat] @guard @can(model:"App\\Models\\admin",ability:"chat")
     getallmessage(chat_id:ID): [Message] @guard @validator @can(ability:"getmessage",injectArgs:true,model:"App\\Models\\chat")
 
 }
@@ -19,7 +19,6 @@ type MessageDone{
 
 type Chat{
     id:ID
-    resturant:Resturant @belongsTo
     user: User
     messages: [Message] @hasmany
     unreadnumber:Int

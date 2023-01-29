@@ -1,16 +1,16 @@
 extend type Mutation{
 
-    addbanner(logo:Upload,status:Int,rank:Int,url:String,where_show:Int):Banner @validator @guard @can(model:"App\\Models\\admin",ability:"banner") 
-    editbanner(id:ID,logo:Upload,status:Int,rank:Int,url:String,where_show:Int):Banner @validator @guard @can(model:"App\\Models\\admin",ability:"banner") 
-    deletebanner(id:ID):Banner @validator @guard @can(model:"App\\Models\\admin",ability:"banner")  
+    addbanner(logo:Upload,status:Int,rank:Int,url:String,where_show:Int):Banner @validator @middleware(value:"tenant") @guard @can(model:"App\\Models\\admin",ability:"banner") 
+    editbanner(id:ID,logo:Upload,status:Int,rank:Int,url:String,where_show:Int):Banner @validator @middleware(value:"tenant") @guard @can(model:"App\\Models\\admin",ability:"banner") 
+    deletebanner(id:ID):Banner @validator @guard @can(model:"App\\Models\\admin",ability:"banner") @middleware(value:"tenant") 
 
 
 }
 
 extend type Query{
 
-    getallbanner:[Banner!] @all(model:"App\\Models\\admin")
-    getbannerwhereshow(where_show:Int):[Banner!] @validator
+    getallbanner:[Banner!] @all(model:"App\\Models\\admin") @middleware(value:"tenant")
+    getbannerwhereshow(where_show:Int):[Banner!] @validator @middleware(value:"tenant")
 }
 
 

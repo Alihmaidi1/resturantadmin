@@ -1,13 +1,13 @@
 extend type Mutation{
 
-    addtabletype(price: Float,name_en:String,name_ar:String,currency_id:ID): tabletype @validator @guard @can(model:"App\\Models\\admin",ability:"tabletype") 
-    edittabletype(id:ID,name_en:String,name_ar:String,price:Float,currency_id:ID): tabletype @validator @guard @can(model:"App\\Models\\admin",ability:"tabletype") 
-    deletetabletype(id:ID):tabletype @validator @guard @can(model:"App\\Models\\admin",ability:"tabletype") 
+    addtabletype(price: Float,name_en:String,name_ar:String,currency_id:ID): tabletype @validator @guard @can(model:"App\\Models\\admin",ability:"tabletype") @middleware(value:"tenant")
+    edittabletype(id:ID,name_en:String,name_ar:String,price:Float,currency_id:ID): tabletype @validator @guard @can(model:"App\\Models\\admin",ability:"tabletype") @middleware(value:"tenant")
+    deletetabletype(id:ID):tabletype @validator @guard @can(model:"App\\Models\\admin",ability:"tabletype") @middleware(value:"tenant")
 }
 
 extend type Query{
 
-    getalltabletype: [tabletype!]  @all
+    getalltabletype: [tabletype!]  @all @middleware(value:"tenant")
 
 }
 

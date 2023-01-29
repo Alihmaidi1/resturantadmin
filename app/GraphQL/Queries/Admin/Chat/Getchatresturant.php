@@ -5,6 +5,7 @@ namespace App\GraphQL\Queries\Admin\Chat;
 use App\Exceptions\CustomException;
 use App\Models\chat;
 use App\Models\message;
+use App\repo\interfaces\chatinterface;
 use Illuminate\Support\Facades\Http;
 
 final class Getchatresturant
@@ -13,6 +14,12 @@ final class Getchatresturant
      * @param  null  $_
      * @param  array{}  $args
      */
+
+    public $chat;
+     public function __construct(chatinterface $chat)
+     {
+        $this->chat = $chat;
+     }
     public function __invoke($_, array $args)
     {
 

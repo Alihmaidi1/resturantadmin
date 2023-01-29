@@ -1,14 +1,14 @@
 
 extend type Mutation{
-    addresturant(name:String,domain:String):Resturant  @validator @guard @can(model:"App\\Models\\resturant",ability:"resturant")
-    editresturant(id:ID,name:String,address:String,domain:String):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
-    deleteresturant(id:ID):Resturant @guard @validator @can(model:"App\\Models\\resturant",ability:"resturant")
+    addresturant(name:String,domain:String):Resturant  @validator @guard @middleware(value:"system") @can(model:"App\\Models\\resturant",ability:"resturant")
+    editresturant(id:ID,name:String,address:String,domain:String):Resturant @guard @middleware(value:"system") @validator @can(model:"App\\Models\\resturant",ability:"resturant")
+    deleteresturant(id:ID):Resturant @guard @validator @middleware(value:"system") @can(model:"App\\Models\\resturant",ability:"resturant")
 }
 
 type Query{
 
-    findresturant(id:ID):Resturant @validator @can(model:"App\\Models\\resturant",ability:"resturant")
-    getallresturant:[Resturant_without_message!] @can(model:"App\\Models\\resturant",ability:"resturant")
+    findresturant(id:ID):Resturant @validator @middleware(value:"system") @can(model:"App\\Models\\resturant",ability:"resturant")
+    getallresturant:[Resturant_without_message!] @middleware(value:"system") @can(model:"App\\Models\\resturant",ability:"resturant")
     chats:[Chat] @hasMany
 
 }

@@ -1,14 +1,14 @@
 extend type Mutation{
 
-    addemployee(name:String,email:String,phone:String,address:String,date_of_birth:String,is_empty:Int,vacation_token:Int,gender:Int,manager_id:ID,job_id:ID,experience_id:ID): Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee") 
-    editemployee(id:ID,name:String,email:String,phone:String,address:String,date_of_birth:String,is_empty:Int,vacation_token:Int,gender:Int,manager_id:ID,job_id:ID,experience_id:ID): Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee")
-    deleteemployee(id:ID): Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee")
+    addemployee(name:String,email:String,phone:String,address:String,date_of_birth:String,is_empty:Int,vacation_token:Int,gender:Int,manager_id:ID,job_id:ID,experience_id:ID): Employee @validator @guard @middleware(value:"tenant") @can(model:"App\\Models\\admin",ability:"employee") 
+    editemployee(id:ID,name:String,email:String,phone:String,address:String,date_of_birth:String,is_empty:Int,vacation_token:Int,gender:Int,manager_id:ID,job_id:ID,experience_id:ID): Employee @validator @guard @middleware(value:"tenant") @can(model:"App\\Models\\admin",ability:"employee")
+    deleteemployee(id:ID): Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee") @middleware(value:"tenant")
 }
 
 extend type Query{
 
-    getemployee(id:ID):Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee") 
-    getallemployee: [Employee] @all(model:"App\\Models\\employee") @guard @can(model:"App\\Models\\admin",ability:"employee") 
+    getemployee(id:ID):Employee @validator @guard @can(model:"App\\Models\\admin",ability:"employee") @middleware(value:"tenant")
+    getallemployee: [Employee] @all(model:"App\\Models\\employee") @guard @can(model:"App\\Models\\admin",ability:"employee") @middleware(value:"tenant")
 
 
 }

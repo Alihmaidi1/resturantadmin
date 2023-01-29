@@ -1,13 +1,13 @@
 extend type Mutation{
 
-    addslider(logo:Upload,status:Int,rank:Int): Slider @validator @guard @can(model:"App\\Models\\admin",ability:"slider") 
-    editslider(id:ID,logo:Upload,status:Int,rank:Int): Slider @validator @guard @can(model:"App\\Models\\admin",ability:"slider") 
-    deleteslider(id:ID): Slider @validator @guard @can(model:"App\\Models\\admin",ability:"slider") 
+    addslider(logo:Upload,status:Int,rank:Int): Slider @validator @guard @middleware(value:"tenant") @can(model:"App\\Models\\admin",ability:"slider") 
+    editslider(id:ID,logo:Upload,status:Int,rank:Int): Slider @validator @guard @middleware(value:"tenant") @can(model:"App\\Models\\admin",ability:"slider") 
+    deleteslider(id:ID): Slider @validator @guard @middleware(value:"tenant") @can(model:"App\\Models\\admin",ability:"slider") 
 
 }
 extend type Query{
 
-    getallslider: [Slider!] @all(model:"App\\Models\\slider")
+    getallslider: [Slider!] @all(model:"App\\Models\\slider") @middleware(value:"tenant")
 
 }
 type Slider{

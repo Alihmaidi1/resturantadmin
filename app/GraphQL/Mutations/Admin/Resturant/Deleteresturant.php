@@ -29,6 +29,7 @@ final class Deleteresturant
         deletedisk("resturant:".$resturant1->id);
         DB::statement("drop database " . $resturant1->database_name);        
         $this->aws->deleteBucket($resturant1->aws->aws_bucket);
+        
         $resturant1->message=trans("admin.the resturant was deleted successfully");
         return $resturant1;
 

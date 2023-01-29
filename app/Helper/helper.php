@@ -121,4 +121,61 @@ use Illuminate\Support\Facades\Storage;
     }
 
 
+    function addSetting($name){
+
+    $setting=[
+        "paypal_client_id"=>null,
+        "paypal_secret"=>null,
+        "status"=>1,
+        "phone"=>null,
+        "meta_title_en"=>null,
+        "meta_title_ar"=>null,
+        "meta_description_en"=>null,
+        "meta_description_ar"=>null,
+        "meta_keyword"=>null,
+        "meta_logo"=>null,
+        "balance_status"=>null,
+        "balance_charge"=>null,
+        "currency_id"=>null,
+        "open_at"=>null,
+        "close_at"=>null,
+        "day_open_en"=>null,
+        "day_open_ar"=>null,
+        "facebook_status"=>null,
+        "facebook_link"=>null,
+        "whatsapp_status"=>null,
+        "whatsapp_link"=>null,
+        "telegram_status"=>null,
+        "telegram_link"=>null,
+        "instagram_status"=>null,
+        "instagram_link"=>null,
+        "twitter_status"=>null,
+        "twitter_link"=>null,
+        "paypal_status"=>null,
+        "owner_name"=>null,
+        "logo"=>null,
+        
+
+    ];
+    $settings = config("setting");
+    $settings[$name] = $setting;
+    config(['setting' => $settings]);
+    $fp = fopen(base_path() .'/config/setting.php' , 'w');
+    fwrite($fp, '<?php return ' . var_export(config('setting'), true) . ';');
+    fclose($fp);
+
+
+    }
+
+
+    function deletesetting($name){
+
+    $settings = config("setting");
+    unset($settings[$name]);
+    config(['setting' => $settings]);
+    $fp = fopen(base_path() .'/config/setting.php' , 'w');
+    fwrite($fp, '<?php return ' . var_export(config('setting'), true) . ';');
+    fclose($fp);
+
+    }
 

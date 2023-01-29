@@ -15,10 +15,8 @@ final class EditsettingValidator extends Validator
     {
         return [
             "currency_id"=>["required","exists:currencies,id"],
-            "resturant_id"=>["required","exists:resturants,id"],
             "meta_logo"=>["mimes:jpg,jpeg,png"],
             "logo"=>["mimes:jpg,jpeg,png"],
-            "id"=>["required","exists:settings,id"]
 
         ];
     }

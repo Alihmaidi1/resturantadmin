@@ -15,6 +15,7 @@ use App\repo\classes\good;
 use App\repo\classes\job;
 use App\repo\classes\resturant;
 use App\repo\classes\role;
+use App\repo\classes\setting;
 use App\repo\classes\slider;
 use App\repo\classes\storehouse;
 use App\repo\classes\table;
@@ -32,6 +33,7 @@ use App\repo\interfaces\goodstoreinterface;
 use App\repo\interfaces\jobinterface;
 use App\repo\interfaces\resturantinterface;
 use App\repo\interfaces\roleinterface;
+use App\repo\interfaces\settinginterface;
 use App\repo\interfaces\sliderinterface;
 use App\repo\interfaces\storehouseinterface;
 use App\repo\interfaces\tableinterface;
@@ -64,6 +66,7 @@ class repo extends ServiceProvider
         $this->app->bind(sliderinterface::class,slider::class);
         $this->app->bind(bannerinterface::class,banner::class);
         $this->app->bind(foodinterface::class,food::class);
+        $this->app->bind(settinginterface::class,setting::class);
 
     }
 

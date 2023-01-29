@@ -39,6 +39,7 @@ final class Addresturant
         DB::statement("create database " . $resturant->database_name);
         $job = new createResturantJob($resturant);
         dispatch($job);
+        addSetting($resturant->id);
         Cache::put("resturant:".$resturant->id,$resturant);
         Cache::pull("resturants");
         $resturant->message=trans("admin.the resturant was created successfully");
